@@ -1,0 +1,30 @@
+[
+  {
+    "id": "point-1",
+    "name_zh": "據點一（座標待確認）",
+    "name_en": "Location 1 (coordinates TBD)",
+    "x": 28,
+    "y": 38
+  },
+  {
+    "id": "point-2",
+    "name_zh": "據點二（座標待確認）",
+    "name_en": "Location 2 (coordinates TBD)",
+    "x": 48,
+    "y": 26
+  },
+  {
+    "id": "point-3",
+    "name_zh": "據點三（座標待確認）",
+    "name_en": "Location 3 (coordinates TBD)",
+    "x": 66,
+    "y": 44
+  },
+  {
+    "id": "point-4",
+    "name_zh": "據點四（座標待確認）",
+    "name_en": "Location 4 (coordinates TBD)",
+    "x": 80,
+    "y": 60
+  }
+]

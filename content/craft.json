@@ -1,0 +1,43 @@
+{
+  "title_zh": "潛水技藝",
+  "title_en": "Diving Craft",
+  "intro_zh": "佔位文字：概述海女潛水裝備與下潛週期，待補充真實研究內容。",
+  "intro_en": "Placeholder text outlining diving gear and the dive cycle — to be replaced with verified research content.",
+  "steps": [
+    {
+      "key": "enter",
+      "label_zh": "下水",
+      "label_en": "Enter Water",
+      "text_zh": "佔位文字，待補充裝備與準備動作說明。",
+      "text_en": "Placeholder text — gear and preparation details pending."
+    },
+    {
+      "key": "descend",
+      "label_zh": "潛降",
+      "label_en": "Descend",
+      "text_zh": "佔位文字，待補充潛降技巧說明。",
+      "text_en": "Placeholder text — descent technique pending."
+    },
+    {
+      "key": "gather",
+      "label_zh": "採集",
+      "label_en": "Gather",
+      "text_zh": "佔位文字，待補充採集石花菜等作業內容。",
+      "text_en": "Placeholder text — gathering practice (e.g. agar seaweed) pending."
+    },
+    {
+      "key": "breathe",
+      "label_zh": "換氣",
+      "label_en": "Surface for Air",
+      "text_zh": "佔位文字，待補充換氣節奏說明。",
+      "text_en": "Placeholder text — breathing rhythm pending."
+    },
+    {
+      "key": "return",
+      "label_zh": "上岸",
+      "label_en": "Return to Shore",
+      "text_zh": "佔位文字，待補充上岸與整理流程說明。",
+      "text_en": "Placeholder text — return and wrap-up process pending."
+    }
+  ]
+}

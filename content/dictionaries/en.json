@@ -11,6 +11,16 @@
   "hero": {
     "scrollHint": "Scroll to explore"
   },
+  "people": {
+    "eyebrow": "People",
+    "viewAll": "View all profiles",
+    "pendingBadge": "Interview in progress",
+    "pendingDetail": "This profile's interview is still in progress; full content will be added later.",
+    "backToList": "← Back to all profiles"
+  },
+  "map": {
+    "eyebrow": "North Coast"
+  },
   "languageSwitcher": {
     "label": "Language"
   },

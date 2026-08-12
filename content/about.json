@@ -1,0 +1,41 @@
+{
+  "title_zh": "關於本專題",
+  "title_en": "About This Project",
+  "sections": [
+    {
+      "id": "methodology",
+      "heading_zh": "研究方法",
+      "heading_en": "Research Methodology",
+      "paragraphs_zh": [
+        "佔位文字：說明田野調查範圍、受訪者選擇方式與資料蒐集流程，待正式研究內容補充。"
+      ],
+      "paragraphs_en": [
+        "Placeholder text outlining the fieldwork scope, interviewee selection process, and data collection procedure — to be completed with the finalized research methodology."
+      ]
+    },
+    {
+      "id": "ethics",
+      "heading_zh": "訪談倫理聲明",
+      "heading_en": "Interview Ethics Statement",
+      "paragraphs_zh": [
+        "佔位文字：說明受訪者知情同意、化名處理原則與資料使用範圍，待正式倫理聲明內容補充。"
+      ],
+      "paragraphs_en": [
+        "Placeholder text covering informed consent, the use of pseudonyms, and the scope of data use — to be completed with the finalized ethics statement."
+      ]
+    },
+    {
+      "id": "sources",
+      "heading_zh": "資料來源",
+      "heading_en": "Data Sources",
+      "paragraphs_zh": [
+        "佔位文字：列出本專題引用之文獻與資料出處，待正式書目資料補充。"
+      ],
+      "paragraphs_en": [
+        "Placeholder text listing references and data sources cited in this project — to be completed with the finalized bibliography."
+      ],
+      "list_zh": ["（文獻待補）", "（文獻待補）"],
+      "list_en": ["(Reference pending)", "(Reference pending)"]
+    }
+  ]
+}

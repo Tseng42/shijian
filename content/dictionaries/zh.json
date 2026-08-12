@@ -11,6 +11,16 @@
   "hero": {
     "scrollHint": "向下捲動"
   },
+  "people": {
+    "eyebrow": "人物誌",
+    "viewAll": "查看所有人物誌",
+    "pendingBadge": "訪談籌備中",
+    "pendingDetail": "此人物訪談尚未完成，完整內容將於後續更新。",
+    "backToList": "← 回人物誌列表"
+  },
+  "map": {
+    "eyebrow": "北海岸"
+  },
   "languageSwitcher": {
     "label": "語言"
   },
