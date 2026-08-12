@@ -1,0 +1,18 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B1A17" />
+      <stop offset="100%" stop-color="#33312B" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)" />
+  <path d="M0 760 C 320 660, 640 860, 960 760 C 1280 660, 1600 860, 1920 760 L1920 1080 L0 1080 Z" fill="#A85A34" opacity="0.18" />
+  <path d="M0 860 C 300 780, 660 940, 960 860 C 1260 780, 1620 940, 1920 860 L1920 1080 L0 1080 Z" fill="#F4F0E6" opacity="0.08" />
+  <path d="M0 940 C 320 900, 640 1000, 960 940 C 1280 900, 1600 1000, 1920 940 L1920 1080 L0 1080 Z" fill="#F4F0E6" opacity="0.14" />
+  <text x="50%" y="46%" text-anchor="middle" font-family="monospace" font-size="20" fill="#F4F0E6" fill-opacity="0.35" letter-spacing="4">
+    HERO VIDEO PLACEHOLDER — 1920×1080
+  </text>
+  <text x="50%" y="52%" text-anchor="middle" font-family="monospace" font-size="14" fill="#F4F0E6" fill-opacity="0.25" letter-spacing="2">
+    replace /public/placeholder-hero.mp4 + this poster
+  </text>
+</svg>

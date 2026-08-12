@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "拾間 ShiJian",
+    "description": "台灣北海岸海女文化 — 品牌識別與體驗設計"
+  },
+  "nav": {
+    "home": "首頁",
+    "people": "人物誌",
+    "about": "關於本專題"
+  },
+  "hero": {
+    "scrollHint": "向下捲動"
+  },
+  "languageSwitcher": {
+    "label": "語言"
+  },
+  "footer": {
+    "copyright": "© 2026 拾間 ShiJian．畢業專題",
+    "aboutLink": "關於本專題"
+  }
+}

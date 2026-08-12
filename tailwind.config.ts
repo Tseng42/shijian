@@ -7,10 +7,20 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    // 全站色彩只能從這三個語意化 token 取用，其餘 Tailwind 預設色一律移除
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      stone: "#F4F0E6",
+      ink: "#1B1A17",
+      accent: "#A85A34",
+    },
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        "heading-zh": ["var(--font-noto-sans-tc)", "sans-serif"],
+        "body-zh": ["var(--font-noto-serif-tc)", "serif"],
+        "heading-en": ["var(--font-fraunces)", "serif"],
+        "body-en": ["var(--font-inter)", "sans-serif"],
       },
     },
   },

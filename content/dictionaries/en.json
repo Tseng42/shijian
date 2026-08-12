@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "ShiJian",
+    "description": "Taiwan's north-coast sea-women culture — brand identity and experience design"
+  },
+  "nav": {
+    "home": "Home",
+    "people": "People",
+    "about": "About"
+  },
+  "hero": {
+    "scrollHint": "Scroll to explore"
+  },
+  "languageSwitcher": {
+    "label": "Language"
+  },
+  "footer": {
+    "copyright": "© 2026 ShiJian. Graduation Project",
+    "aboutLink": "About This Project"
+  }
+}
