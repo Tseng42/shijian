@@ -83,3 +83,11 @@ export function getLegacy(): LegacyContent {
 export function getAbout(): AboutContent {
   return readJson<AboutContent>("about.json");
 }
+
+export function getHistory(): AboutContent {
+  return readJson<AboutContent>("history.json");
+}
+
+export function getEcology(): AboutContent {
+  return readJson<AboutContent>("ecology.json");
+}

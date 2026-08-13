@@ -6,10 +6,15 @@
   "nav": {
     "home": "Home",
     "people": "People",
+    "history": "History",
+    "ecology": "Ecology",
+    "experience": "Experience",
     "about": "About"
   },
   "hero": {
-    "scrollHint": "Scroll to explore"
+    "scrollHint": "Scroll to explore",
+    "pauseMotion": "Pause background motion",
+    "playMotion": "Play background motion"
   },
   "people": {
     "eyebrow": "People",
@@ -18,14 +23,44 @@
     "pendingDetail": "This profile's interview is still in progress; full content will be added later.",
     "backToList": "← Back to all profiles"
   },
+  "craft": {
+    "eyebrow": "Craft",
+    "experienceCta": "Book a Craft Experience"
+  },
+  "atlas": {
+    "title": "Site Atlas",
+    "intro": "A complete index of ShiJian's content, organized by theme. Select a chapter to continue."
+  },
+  "experience": {
+    "title": "Book a Craft Experience",
+    "intro": "Interested in experiencing sea-women diving and gathering firsthand? Leave your contact details and preferred timeframe, and we'll follow up by email to confirm.",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formTimeframe": "Preferred timeframe",
+    "formTimeframePlaceholder": "e.g. early September 2026…",
+    "formMessage": "Message (optional)",
+    "formSubmit": "Submit",
+    "formSubmitting": "Submitting…",
+    "formSuccess": "Registered — we'll be in touch soon.",
+    "formError": "Something went wrong. Please try again later, or email us directly.",
+    "notConfigured": "This form isn't configured yet — please contact the site owner."
+  },
   "map": {
     "eyebrow": "North Coast"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "sound": {
+    "on": "Interaction sound: On",
+    "off": "Interaction sound: Off"
   },
   "languageSwitcher": {
     "label": "Language"
   },
   "footer": {
     "copyright": "© 2026 ShiJian. Graduation Project",
-    "aboutLink": "About This Project"
+    "aboutLink": "About This Project",
+    "atlasLink": "Site Atlas"
   }
 }

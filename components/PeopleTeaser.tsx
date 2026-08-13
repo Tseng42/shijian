@@ -48,6 +48,13 @@ export default function PeopleTeaser({
         const scrollDistance = track.scrollWidth - window.innerWidth;
         if (scrollDistance <= 0) return;
 
+        // 捲動越快、整排卡片越往捲動方向輕輕傾斜，停下來就回正——
+        // 用 quickTo 讓每次取樣之間有緩衝，不會每幀硬切造成抖動。
+        const skewTo = gsap.quickTo(track, "skewX", {
+          duration: 0.4,
+          ease: "power3",
+        });
+
         gsap.to(track, {
           x: -scrollDistance,
           ease: "none",
@@ -58,6 +65,22 @@ export default function PeopleTeaser({
             scrub: 0.6,
             pin: true,
             invalidateOnRefresh: true,
+            // 卡片景深：離目前捲動進度越遠的卡片，微微轉向越多，純數學算法，
+            // 不讀版面尺寸（避免每個 tick 都觸發 layout reflow）。
+            onUpdate: (self) => {
+              const cards = track.children;
+              const count = cards.length;
+              if (count <= 1) return;
+              for (let i = 0; i < count; i++) {
+                const cardProgress = i / (count - 1);
+                const deviation = self.progress - cardProgress;
+                const rotateY = gsap.utils.clamp(-12, 12, deviation * -40);
+                gsap.set(cards[i], { rotateY });
+              }
+              skewTo(gsap.utils.clamp(-4, 4, self.getVelocity() / -300));
+            },
+            onLeave: () => skewTo(0),
+            onLeaveBack: () => skewTo(0),
           },
         });
       }, sectionRef);
@@ -72,13 +95,14 @@ export default function PeopleTeaser({
   return (
     <section ref={sectionRef} className="overflow-hidden bg-ink py-24 text-stone">
       <div className="mb-10 px-6 md:px-16">
-        <p className="font-body-en text-xs uppercase tracking-widest text-stone/50">
+        <h2 className="font-body-en text-xs uppercase tracking-widest text-stone/50">
           {eyebrow}
-        </p>
+        </h2>
       </div>
 
       <div
         ref={trackRef}
+        style={{ perspective: "1000px" }}
         className="flex gap-6 px-6 motion-reduce:flex-wrap motion-reduce:overflow-x-auto md:px-16"
       >
         {people.map((person) => (
@@ -96,7 +120,7 @@ export default function PeopleTeaser({
       <div className="mt-10 px-6 md:px-16">
         <Link
           href={`/${locale}/people`}
-          className="font-body-en text-sm underline decoration-stone/40 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+          className="font-body-en -ml-1 inline-flex min-h-11 items-center px-1 text-sm underline decoration-stone/40 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
         >
           {viewAllLabel}
         </Link>

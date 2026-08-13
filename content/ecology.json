@@ -1,0 +1,45 @@
+{
+  "title_zh": "潮間帶生態與加工",
+  "title_en": "Intertidal Ecology & Processing",
+  "sections": [
+    {
+      "id": "agar",
+      "heading_zh": "認識石花菜",
+      "heading_en": "About Agar Seaweed",
+      "paragraphs_zh": [
+        "石花菜屬於紅藻類，生長在水質清澈、流速快、有浪且有石頭附著的礁岩環境，深度約 5 到 10 公尺，基隆、貢寮一帶海岸是台灣主要產地之一。",
+        "剛採下的石花菜是紅色的，腥味重，需經過俗稱「七泡七曬」的工序才能轉為成品：反覆以淡水搓洗去除細沙與鹽分、鋪曬在岸邊廣場，藻紅素隨日曬逐漸分解，顏色也從深紫、深褐色，經棕紅、淺咖啡、土黃、鵝黃，最後轉為亮麗的米白色。過程中若淋到雨，石花菜會轉綠、發霉、腥味加重，因此整個工序高度仰賴天氣配合。",
+        "曬乾後還需用大木棍反覆敲打，破壞纖維並剔除附著的鈣質沉澱物，避免煮出來的石花凍有雜質；有些海女也會依靠汽機車輪子輔助處理。成品最終或自行在路邊擺攤販售，或批發給中藥房、食品廠等盤商收購，近年也有部分朝觀光體驗轉型。"
+      ],
+      "paragraphs_en": [
+        "Agar seaweed is a red algae that grows on reef rock in clear, fast-flowing, wave-exposed water, roughly 5 to 10 meters deep. The coastline around Keelung and Gongliao is one of Taiwan's main harvesting areas.",
+        "Freshly gathered agar is deep red and strongly briny. It goes through a process locally called \"seven soaks, seven sun-dries\": repeated fresh-water rinsing to remove sand and salt, then laid out to dry in open coastal squares. Sunlight gradually breaks down the algae's red pigment, shifting its color from deep purple/brown, through russet, light coffee, and earthy yellow, to a bright rice-white. Rain during this stage turns it green, moldy, and stronger-smelling — the entire process depends heavily on weather.",
+        "Once dried, it's beaten repeatedly with a wooden mallet to break down fibers and remove calcium deposits, so the finished jelly stays free of grit; some sea-women also use car or scooter wheels to help process it. The finished product is either sold directly at roadside stalls or wholesaled to traditional pharmacies and food processors — with a growing share shifting toward tourism-based experiences in recent years."
+      ]
+    },
+    {
+      "id": "tek",
+      "heading_zh": "傳統生態知識",
+      "heading_en": "Traditional Ecological Knowledge",
+      "paragraphs_zh": [
+        "海洋採集有一套與生物週期同步的日曆：2 到 4 月採青苔、髮菜，4 到 7 月是石花菜的盛產期，8 月之後則轉為採集麒麟菜或海膽。潮汐與海流的判讀——大潮小潮決定潮間帶外露面積、加上海流觀測與風向經驗——是決定何時能安全下水的關鍵知識。",
+        "採集者對場域也有自發性的維護共識：拔除海菜時會留意角度以避免傷及根部，部分區域也存在不成文的禁採期，讓資源得以休養生息。"
+      ],
+      "paragraphs_en": [
+        "Gathering follows a calendar synced to biological cycles: moss and fat choy from February to April, peak agar season from April to July, then a shift to sea fingers or sea urchin from August onward. Reading tides and currents — how spring versus neap tides expose different amounts of the intertidal zone, combined with current observation and wind experience — is core knowledge for judging when it's safe to enter the water.",
+        "Gatherers also maintain an informal stewardship of their own harvesting grounds: pulling seaweed at an angle that avoids damaging the roots, and in some areas, unwritten closed seasons that let the resource recover."
+      ]
+    },
+    {
+      "id": "crisis",
+      "heading_zh": "產業危機",
+      "heading_en": "Industry Crisis",
+      "paragraphs_zh": [
+        "佔位文字：說明氣候變遷、世代交替等因素對採集產業帶來的挑戰，目前訪談內容尚未涵蓋此部分，待補充實際資料來源後才會發布，避免臆測未經查證的產業現況。"
+      ],
+      "paragraphs_en": [
+        "Placeholder text on how climate change and generational succession challenge this gathering practice. Current interview material doesn't yet cover this angle — it will only be published once backed by verified sources, to avoid speculating about industry conditions that haven't been confirmed."
+      ]
+    }
+  ]
+}

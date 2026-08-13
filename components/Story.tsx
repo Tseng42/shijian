@@ -14,8 +14,10 @@ type StoryProps = {
 
 export default function Story({ locale, title, paragraphs }: StoryProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const leadRef = useRef<HTMLParagraphElement>(null);
   const headingFont = locale === "zh" ? "font-heading-zh" : "font-heading-en";
   const bodyFont = locale === "zh" ? "font-body-zh" : "font-body-en";
+  const [lead, ...rest] = paragraphs;
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -34,6 +36,31 @@ export default function Story({ locale, title, paragraphs }: StoryProps) {
       if (cancelled || !sectionRef.current) return;
 
       ctx = gsap.context(() => {
+        // 大字主敘事句：逐行從遮罩下方浮出，是這個段落唯一的「重手法」，
+        // 其餘段落維持原本輕量的淡入，才不會整段都在動、失去重點。
+        if (leadRef.current) {
+          // 註：曾嘗試用 wordDelimiter:"" 讓中文逐行偵測更準確，但實測會不穩定
+          // （同一段文字有時正確抓到 4 行，有時整句被拆成一字一行），
+          // 風險是正式環境可能出現破版，改回穩定但沒有逐行分段的整段遮罩淡入。
+          const leadSplit = new SplitText(leadRef.current, {
+            type: "lines",
+            mask: "lines",
+            linesClass: "story-lead-line",
+          });
+          gsap.set(leadSplit.lines, { yPercent: 110 });
+          gsap.to(leadSplit.lines, {
+            yPercent: 0,
+            duration: 1.1,
+            ease: "power3.out",
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: leadRef.current,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+
         const paragraphEls =
           sectionRef.current!.querySelectorAll<HTMLElement>(
             "[data-story-paragraph]"
@@ -66,15 +93,21 @@ export default function Story({ locale, title, paragraphs }: StoryProps) {
       cancelled = true;
       ctx?.revert();
     };
-  }, []);
+  }, [lead, rest.length]);
 
   return (
-    <section ref={sectionRef} className="px-6 py-24 md:px-[15%] md:py-40">
-      <h2 className={`${headingFont} mb-10 text-2xl font-bold md:text-3xl`}>
+    <section ref={sectionRef} className="px-6 py-32 md:px-[10%] md:py-48">
+      <h2 className="font-body-en mb-10 text-xs uppercase tracking-[0.3em] text-ink/50 md:mb-16">
         {title}
       </h2>
-      <div className="space-y-8">
-        {paragraphs.map((paragraph, index) => (
+      <p
+        ref={leadRef}
+        className={`${headingFont} mb-16 max-w-4xl text-4xl font-bold leading-[1.15] md:mb-24 md:text-6xl lg:text-7xl`}
+      >
+        {lead}
+      </p>
+      <div className="max-w-xl space-y-8 md:ml-auto">
+        {rest.map((paragraph, index) => (
           <p
             key={index}
             data-story-paragraph

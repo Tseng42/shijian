@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getAllPeople, getPersonBySlug } from "@/lib/content/people";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { locales, type Locale } from "@/lib/i18n/config";
+import PersonQuote from "@/components/PersonQuote";
 
 export function generateStaticParams() {
   const people = getAllPeople();
@@ -41,20 +42,19 @@ export default async function PersonPage({
   const bodyFont = locale === "zh" ? "font-body-zh" : "font-body-en";
 
   return (
-    <main className="px-6 py-24 md:px-16 md:py-32">
+    <main id="main-content" className="px-6 py-24 md:px-16 md:py-32">
       <Link
         href={`/${locale}/people`}
-        className="font-body-en mb-12 inline-block text-sm text-ink/60 transition-colors hover:text-accent"
+        className="font-body-en -ml-1 mb-12 inline-flex min-h-11 items-center px-1 text-sm text-ink/60 transition-colors hover:text-accent"
       >
         {dict.people.backToList}
       </Link>
 
       <div className="mx-auto grid max-w-4xl gap-10 md:grid-cols-[minmax(0,320px)_1fr]">
         <div className="relative aspect-[3/4] overflow-hidden bg-stone">
-          {/* TODO: 補充有意義的 alt 文字 */}
           <Image
             src={person.photo}
-            alt=""
+            alt={name}
             fill
             priority
             className="object-cover"
@@ -68,15 +68,14 @@ export default async function PersonPage({
             </span>
           )}
 
-          <h1 className={`${headingFont} mb-6 text-3xl font-bold md:text-4xl`}>
+          <h1 className={`${headingFont} mb-6 text-balance text-3xl font-bold md:text-4xl`}>
             {name}
           </h1>
 
-          <p
+          <PersonQuote
+            quote={quoteMarked}
             className={`${bodyFont} mb-8 text-xl leading-relaxed text-ink/80`}
-          >
-            {quoteMarked}
-          </p>
+          />
 
           {person.status === "pending" && (
             // TODO: 訪談完成後於此補上完整人物側寫內容

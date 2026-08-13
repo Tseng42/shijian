@@ -5,11 +5,46 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function Hero({ scrollHint }: { scrollHint: string }) {
+export default function Hero({
+  scrollHint,
+  pauseMotionLabel,
+  playMotionLabel,
+}: {
+  scrollHint: string;
+  pauseMotionLabel: string;
+  playMotionLabel: string;
+}) {
   const [motionEnabled, setMotionEnabled] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!motionEnabled || !video) return;
+    const handlePlay = () => setVideoPlaying(true);
+    const handlePause = () => setVideoPlaying(false);
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
+    return () => {
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
+    };
+  }, [motionEnabled]);
+
+  const toggleVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    const next = !videoPlaying;
+    setVideoPlaying(next);
+    if (next) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  };
 
   useEffect(() => {
     const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -66,6 +101,7 @@ export default function Hero({ scrollHint }: { scrollHint: string }) {
           {motionEnabled ? (
             // TODO: 影片素材待補，正式檔案請放在 /public/placeholder-hero.mp4
             <video
+              ref={videoRef}
               className="h-full w-full object-cover"
               src="/placeholder-hero.mp4"
               poster="/placeholder-hero-poster.svg"
@@ -94,7 +130,10 @@ export default function Hero({ scrollHint }: { scrollHint: string }) {
           }`}
         >
           {/* TODO: 替換為正式 Logo SVG，檔案將命名為 /public/logo.svg，單色墨色版本 */}
-          <h1 className="font-heading-zh text-5xl font-black text-stone md:text-8xl">
+          <h1
+            translate="no"
+            className="font-heading-zh text-balance text-5xl font-black text-stone md:text-8xl"
+          >
             拾間
             <span className="font-heading-en mt-2 block text-2xl font-normal italic text-stone/90 md:text-4xl">
               ShiJian
@@ -104,6 +143,36 @@ export default function Hero({ scrollHint }: { scrollHint: string }) {
             {scrollHint}
           </p>
         </div>
+
+        {motionEnabled && (
+          // WCAG 2.2.2：自動播放且長度超過 5 秒的動態內容需提供暫停機制
+          <button
+            type="button"
+            onClick={toggleVideo}
+            aria-label={videoPlaying ? pauseMotionLabel : playMotionLabel}
+            style={{ bottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
+            className="absolute right-6 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-stone/40 bg-ink/40 text-stone backdrop-blur-sm transition-colors hover:border-stone hover:bg-ink/60"
+          >
+            {videoPlaying ? (
+              <svg
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                className="h-3.5 w-3.5 fill-current"
+              >
+                <rect x="3" y="2" width="3.5" height="12" />
+                <rect x="9.5" y="2" width="3.5" height="12" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                className="h-3.5 w-3.5 fill-current"
+              >
+                <path d="M4 2 L14 8 L4 14 Z" />
+              </svg>
+            )}
+          </button>
+        )}
       </div>
     </section>
   );

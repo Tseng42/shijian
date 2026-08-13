@@ -31,8 +31,12 @@ export default async function Home({
     locale === "zh" ? story.paragraphs_zh : story.paragraphs_en;
 
   return (
-    <main>
-      <Hero scrollHint={dict.hero.scrollHint} />
+    <main id="main-content">
+      <Hero
+        scrollHint={dict.hero.scrollHint}
+        pauseMotionLabel={dict.hero.pauseMotion}
+        playMotionLabel={dict.hero.playMotion}
+      />
 
       <Story locale={locale} title={storyTitle} paragraphs={storyParagraphs} />
 
@@ -44,7 +48,12 @@ export default async function Home({
         pendingLabel={dict.people.pendingBadge}
       />
 
-      <Craft locale={locale} content={craft} />
+      <Craft
+        locale={locale}
+        content={craft}
+        eyebrow={dict.craft.eyebrow}
+        experienceCta={dict.craft.experienceCta}
+      />
 
       <MapSection
         locale={locale}

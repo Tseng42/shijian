@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Person } from "@/lib/content/people";
 import type { Locale } from "@/lib/i18n/config";
+import { useSound } from "./SoundProvider";
+import { playHoverTick } from "@/lib/sound";
 
 const MotionLink = motion(Link);
 
@@ -14,6 +16,7 @@ type PersonCardProps = {
   pendingLabel: string;
   variant?: "onLight" | "onDark";
   className?: string;
+  baseRotation?: number;
 };
 
 export default function PersonCard({
@@ -22,6 +25,7 @@ export default function PersonCard({
   pendingLabel,
   variant = "onLight",
   className = "",
+  baseRotation = 0,
 }: PersonCardProps) {
   const name = locale === "zh" ? person.name_zh : person.name_en;
   const quote = locale === "zh" ? person.quote_zh : person.quote_en;
@@ -29,14 +33,19 @@ export default function PersonCard({
   const quoteFont = locale === "zh" ? "font-body-zh" : "font-body-en";
   const nameColor = variant === "onDark" ? "text-stone" : "text-ink";
   const quoteColor = variant === "onDark" ? "text-stone/70" : "text-ink/60";
+  const { enabled: soundEnabled } = useSound();
 
   return (
     <MotionLink
       href={`/${locale}/people/${person.slug}`}
       className={`block outline-none focus-visible:ring-2 focus-visible:ring-accent ${className}`}
+      variants={{ rest: { rotate: baseRotation }, hover: { rotate: 0 } }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       initial="rest"
       whileHover="hover"
       whileFocus="hover"
+      onHoverStart={() => soundEnabled && playHoverTick()}
+      onFocus={() => soundEnabled && playHoverTick()}
     >
       <motion.div
         variants={{
@@ -51,8 +60,7 @@ export default function PersonCard({
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="h-full w-full"
         >
-          {/* TODO: 補充有意義的 alt 文字 */}
-          <Image src={person.photo} alt="" fill className="object-cover" />
+          <Image src={person.photo} alt={name} fill className="object-cover" />
         </motion.div>
 
         {person.status === "pending" && (
@@ -63,8 +71,12 @@ export default function PersonCard({
       </motion.div>
 
       <div className="mt-4">
-        <p className={`${nameFont} ${nameColor} text-lg font-bold`}>{name}</p>
-        <p className={`${quoteFont} ${quoteColor} mt-1 text-sm`}>{quote}</p>
+        <p className={`${nameFont} ${nameColor} text-balance text-lg font-bold`}>
+          {name}
+        </p>
+        <p className={`${quoteFont} ${quoteColor} mt-1 line-clamp-2 text-sm`}>
+          {quote}
+        </p>
       </div>
     </MotionLink>
   );

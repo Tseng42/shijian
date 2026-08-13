@@ -11,9 +11,10 @@ const config: Config = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      stone: "#F4F0E6",
-      ink: "#1B1A17",
-      accent: "#A85A34",
+      // 檔案白：接近白但不是純白，墨黑，硃紅只當印章色用（很少大面積使用）
+      stone: "#FCFCFA",
+      ink: "#1A1A1A",
+      accent: "#B23A2E",
     },
     extend: {
       fontFamily: {

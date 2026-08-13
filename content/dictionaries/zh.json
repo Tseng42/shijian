@@ -6,10 +6,15 @@
   "nav": {
     "home": "首頁",
     "people": "人物誌",
+    "history": "深度歷史",
+    "ecology": "潮間帶生態",
+    "experience": "職人體驗",
     "about": "關於本專題"
   },
   "hero": {
-    "scrollHint": "向下捲動"
+    "scrollHint": "向下捲動",
+    "pauseMotion": "暫停背景動態",
+    "playMotion": "播放背景動態"
   },
   "people": {
     "eyebrow": "人物誌",
@@ -18,14 +23,44 @@
     "pendingDetail": "此人物訪談尚未完成，完整內容將於後續更新。",
     "backToList": "← 回人物誌列表"
   },
+  "craft": {
+    "eyebrow": "工藝",
+    "experienceCta": "預約職人體驗"
+  },
+  "atlas": {
+    "title": "文化網頁地圖",
+    "intro": "拾間內容的完整索引，依主題分類，點擊前往各篇章。"
+  },
+  "experience": {
+    "title": "職人體驗預約",
+    "intro": "想親自體驗海女採集與潛水技藝嗎？留下你的聯絡方式與想預約的時段，我們會透過 email 與你聯繫確認細節。",
+    "formName": "姓名",
+    "formEmail": "Email",
+    "formTimeframe": "希望預約的時段",
+    "formTimeframePlaceholder": "例如：2026 年 9 月上旬…",
+    "formMessage": "想說的話（選填）",
+    "formSubmit": "送出登記",
+    "formSubmitting": "送出中…",
+    "formSuccess": "登記成功，我們會盡快與你聯繫。",
+    "formError": "送出失敗，請稍後再試，或直接寄信給我們。",
+    "notConfigured": "表單尚未設定完成，請聯繫網站管理者。"
+  },
   "map": {
     "eyebrow": "北海岸"
+  },
+  "a11y": {
+    "skipToContent": "跳至主要內容"
+  },
+  "sound": {
+    "on": "互動音效：開啟",
+    "off": "互動音效：關閉"
   },
   "languageSwitcher": {
     "label": "語言"
   },
   "footer": {
     "copyright": "© 2026 拾間 ShiJian．畢業專題",
-    "aboutLink": "關於本專題"
+    "aboutLink": "關於本專題",
+    "atlasLink": "文化網頁地圖"
   }
 }

@@ -21,7 +21,7 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
             key={targetLocale}
             href={href}
             aria-current={isActive ? "page" : undefined}
-            className={`font-body-en text-sm uppercase tracking-wide transition-colors ${
+            className={`font-body-en -my-2.5 inline-flex min-h-11 items-center py-2.5 text-sm uppercase tracking-wide transition-colors ${
               isActive ? "text-ink" : "text-ink/40 hover:text-accent"
             }`}
           >

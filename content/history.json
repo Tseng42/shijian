@@ -1,0 +1,41 @@
+{
+  "title_zh": "深度歷史",
+  "title_en": "History",
+  "sections": [
+    {
+      "id": "context",
+      "heading_zh": "歷史脈絡",
+      "heading_en": "Historical Context",
+      "paragraphs_zh": [
+        "根據曙旅文化工作室創辦人吳函恩與馬岡在地海女（罔市阿嬤）於 2026 年 5 月的訪談，台灣的海洋採集文化深受日治時期琉球漁民傳入影響，發展出結合東北角礁岩地形的獨特採集模式，石花菜（寒天草）在當時具有相當高的經濟價值。受訪者提及石花菜曾與茶葉、糖、樟腦並列為地方特產——這項說法目前屬於口述歷史範疇，與文獻中較常見的「茶、糖、樟腦」台灣三寶略有出入，仍待進一步查證比對正式史料。",
+        "「海女」一詞其實受日韓文化影響，台灣早期並無此稱呼。根據訪談，現在的專業採集者傾向使用「海洋採集者」，因為潮間帶採集活動並不限於女性——男性同樣參與，例如潛水捕撈龍蝦與海膽。"
+      ],
+      "paragraphs_en": [
+        "Based on a May 2026 interview with Han-en Wu, founder of Shulu Culture Studio, and a local sea-woman from Magang (referred to as Grandma Wǎng-shì), Taiwan's ocean-gathering practice was shaped by fishing traditions brought over by Ryukyuan fishermen during the Japanese colonial period, developing a gathering style specific to northeast coast's reef terrain. Agar seaweed (also called \"hantengcao\") held considerable economic value at the time; the interviewee noted it was once grouped with tea, sugar, and camphor as regional specialties — a claim that remains oral history for now, differing slightly from the \"tea, sugar, camphor\" framing more commonly found in written sources, and pending further verification against primary records.",
+        "The term \"sea-women\" (haenyeo-influenced) was itself shaped by Japanese and Korean usage and wasn't historically used in Taiwan. Per the interview, practitioners today increasingly prefer \"ocean gatherers,\" since intertidal gathering isn't limited to women — men participate too, for instance diving for lobster and sea urchin."
+      ]
+    },
+    {
+      "id": "division",
+      "heading_zh": "性別與季節分工",
+      "heading_en": "Gender & Seasonal Division of Labor",
+      "paragraphs_zh": [
+        "根據訪談內容，性別分工上男性多負責深潛捕撈龍蝦、海膽等；女性則多在岸邊礁岩或淺水區採集石花菜、紫菜等海菜。季節性採集節奏請見〈潮間帶生態與加工〉頁面的傳統生態知識。"
+      ],
+      "paragraphs_en": [
+        "Per the interview, men typically handle deeper dives for lobster and sea urchin, while women more often gather along shore rocks or in shallow water for agar seaweed and other sea vegetables. See the seasonal harvest calendar under Traditional Ecological Knowledge on the Ecology page."
+      ]
+    },
+    {
+      "id": "stories",
+      "heading_zh": "海女小故事",
+      "heading_en": "Sea-Women Stories",
+      "paragraphs_zh": [
+        "已完成一輪田野訪談（訪談對象：曙旅文化工作室創辦人吳函恩、馬岡在地海女），目前紀錄以技藝與工序為主。個人生命敘事片段仍待進一步整理與受訪者同意後補充，不會提前發布未經確認的內容。"
+      ],
+      "paragraphs_en": [
+        "An initial round of field interviews is complete (with Shulu Culture Studio founder Han-en Wu and a local sea-woman from Magang), currently focused on craft and process documentation. Personal narrative excerpts are still being organized and will only be published with the interviewees' confirmed consent."
+      ]
+    }
+  ]
+}

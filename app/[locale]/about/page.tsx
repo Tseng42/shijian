@@ -25,8 +25,8 @@ export default async function AboutPage({
   const bodyFont = locale === "zh" ? "font-body-zh" : "font-body-en";
 
   return (
-    <main className="px-6 py-24 md:px-[15%] md:py-32">
-      <h1 className={`${headingFont} mb-16 text-3xl font-bold md:text-5xl`}>
+    <main id="main-content" className="px-6 py-24 md:px-[15%] md:py-32">
+      <h1 className={`${headingFont} mb-16 text-balance text-3xl font-bold md:text-5xl`}>
         {title}
       </h1>
 
@@ -40,7 +40,7 @@ export default async function AboutPage({
 
           return (
             <section key={section.id}>
-              <h2 className={`${headingFont} mb-4 text-xl font-bold md:text-2xl`}>
+              <h2 className={`${headingFont} mb-4 text-balance text-xl font-bold md:text-2xl`}>
                 {heading}
               </h2>
               <div className="space-y-4">
