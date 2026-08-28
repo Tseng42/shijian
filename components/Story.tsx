@@ -2,8 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+import ScrollBurnText from "@/components/ui/scroll-burn-text";
 import type { Locale } from "@/lib/i18n/config";
 
 type StoryProps = {
@@ -14,109 +13,81 @@ type StoryProps = {
 
 export default function Story({ locale, title, paragraphs }: StoryProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const leadRef = useRef<HTMLParagraphElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
   const headingFont = locale === "zh" ? "font-heading-zh" : "font-heading-en";
-  const bodyFont = locale === "zh" ? "font-body-zh" : "font-body-en";
-  const [lead, ...rest] = paragraphs;
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReducedMotion || !sectionRef.current) return;
 
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    // 背景一直有一顆極慢的天青色潮汐光暈在呼吸，滑鼠移進來時光暈會懶懶地
+    // 跟過去——呼應「以身體與潮汐對話」這句話本身，而不是純裝飾。放在燒字
+    // 效果的 backdrop 裡，才會跟著 pin 住的畫面一起固定，不會跟捲動脫節。
+    if (!glowRef.current) return;
 
-    // 等中文字體就緒後再拆行，避免用 fallback 字體量出錯誤的行寬／段落高度
-    // （連帶會讓下方 People 區塊的 pin 位置算錯，造成捲動跳位）。
-    let ctx: gsap.Context | undefined;
-    let cancelled = false;
+    if (prefersReducedMotion) {
+      gsap.set(glowRef.current, { opacity: 0.5, scale: 1 });
+      return;
+    }
 
-    document.fonts.ready.then(() => {
-      if (cancelled || !sectionRef.current) return;
-
-      ctx = gsap.context(() => {
-        // 大字主敘事句：逐行從遮罩下方浮出，是這個段落唯一的「重手法」，
-        // 其餘段落維持原本輕量的淡入，才不會整段都在動、失去重點。
-        if (leadRef.current) {
-          // 註：曾嘗試用 wordDelimiter:"" 讓中文逐行偵測更準確，但實測會不穩定
-          // （同一段文字有時正確抓到 4 行，有時整句被拆成一字一行），
-          // 風險是正式環境可能出現破版，改回穩定但沒有逐行分段的整段遮罩淡入。
-          const leadSplit = new SplitText(leadRef.current, {
-            type: "lines",
-            mask: "lines",
-            linesClass: "story-lead-line",
-          });
-          gsap.set(leadSplit.lines, { yPercent: 110 });
-          gsap.to(leadSplit.lines, {
-            yPercent: 0,
-            duration: 1.1,
-            ease: "power3.out",
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: leadRef.current,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          });
-        }
-
-        const paragraphEls =
-          sectionRef.current!.querySelectorAll<HTMLElement>(
-            "[data-story-paragraph]"
-          );
-
-        paragraphEls.forEach((el) => {
-          const split = new SplitText(el, {
-            type: "lines",
-            linesClass: "story-line",
-          });
-          gsap.set(split.lines, { opacity: 0, y: 24 });
-
-          gsap.to(split.lines, {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: "power2.out",
-            stagger: 0.08,
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
-        });
-      }, sectionRef);
+    gsap.to(glowRef.current, {
+      scale: 1.18,
+      opacity: 0.75,
+      duration: 5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
     });
 
-    return () => {
-      cancelled = true;
-      ctx?.revert();
+    const section = sectionRef.current;
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    if (!finePointer || !section) return;
+
+    const quickX = gsap.quickTo(glowRef.current, "x", { duration: 1.4, ease: "power2" });
+    const quickY = gsap.quickTo(glowRef.current, "y", { duration: 1.4, ease: "power2" });
+    const handlePointerMove = (event: PointerEvent) => {
+      const rect = section.getBoundingClientRect();
+      const relX = (event.clientX - rect.left) / rect.width - 0.5;
+      const relY = (event.clientY - rect.top) / rect.height - 0.5;
+      quickX(relX * 60);
+      quickY(relY * 40);
     };
-  }, [lead, rest.length]);
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, []);
 
   return (
-    <section ref={sectionRef} className="px-6 py-32 md:px-[10%] md:py-48">
-      <h2 className="font-body-en mb-10 text-xs uppercase tracking-[0.3em] text-ink/50 md:mb-16">
-        {title}
-      </h2>
-      <p
-        ref={leadRef}
-        className={`${headingFont} mb-16 max-w-4xl text-4xl font-bold leading-[1.15] md:mb-24 md:text-6xl lg:text-7xl`}
-      >
-        {lead}
-      </p>
-      <div className="max-w-xl space-y-8 md:ml-auto">
-        {rest.map((paragraph, index) => (
-          <p
-            key={index}
-            data-story-paragraph
-            className={`${bodyFont} text-lg leading-loose md:text-xl`}
-          >
-            {paragraph}
-          </p>
-        ))}
+    // 沒有 overflow-hidden：這個 class 放在這裡會讓下面 ScrollBurnText 的
+    // sticky 畫面失效（position: sticky 是跟「最近一個 overflow 不是 visible
+    // 的祖先」對齊，一旦這層本身變成那個祖先，畫面就只會跟著頁面正常捲走，
+    // 不會真的固定）。光暈本身已經被 ScrollBurnText 自己的 sticky 容器裁切，
+    // 這層不需要再裁一次。
+    <section ref={sectionRef} className="relative bg-stone">
+      <div className="px-6 pt-32 md:px-[10%] md:pt-40">
+        <h2 className="font-body-en text-xs uppercase tracking-[0.3em] text-ink/50">
+          {title}
+        </h2>
       </div>
+
+      <ScrollBurnText
+        sections={paragraphs}
+        hint={null}
+        runway="200vh"
+        fontClassName={headingFont}
+        className="bg-transparent"
+        backdrop={
+          <div
+            ref={glowRef}
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(62,100,114,0.4) 0%, rgba(62,100,114,0.1) 46%, rgba(62,100,114,0) 72%)",
+            }}
+          />
+        }
+      />
     </section>
   );
 }

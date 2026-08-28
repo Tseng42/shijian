@@ -21,7 +21,11 @@
     "viewAll": "View all profiles",
     "pendingBadge": "Interview in progress",
     "pendingDetail": "This profile's interview is still in progress; full content will be added later.",
-    "backToList": "← Back to all profiles"
+    "backToList": "← Back to all profiles",
+    "prev": "Previous",
+    "next": "Next",
+    "carouselLabel": "People carousel",
+    "carouselInstructions": "Use the left and right arrow keys, or drag with a mouse or touch to rotate."
   },
   "craft": {
     "eyebrow": "Craft",
@@ -46,7 +50,9 @@
     "notConfigured": "This form isn't configured yet — please contact the site owner."
   },
   "map": {
-    "eyebrow": "North Coast"
+    "eyebrow": "North Coast",
+    "photoPending": "Photo coming soon",
+    "viewOnMap": "View on Google Maps"
   },
   "a11y": {
     "skipToContent": "Skip to main content"

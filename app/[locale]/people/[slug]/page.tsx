@@ -37,7 +37,7 @@ export default async function PersonPage({
   const dict = await getDictionary(locale);
   const name = locale === "zh" ? person.name_zh : person.name_en;
   const quote = locale === "zh" ? person.quote_zh : person.quote_en;
-  const quoteMarked = locale === "zh" ? `「${quote}」` : `“${quote}”`;
+  const quoteMarked = quote && (locale === "zh" ? `「${quote}」` : `“${quote}”`);
   const headingFont = locale === "zh" ? "font-heading-zh" : "font-heading-en";
   const bodyFont = locale === "zh" ? "font-body-zh" : "font-body-en";
 
@@ -72,10 +72,12 @@ export default async function PersonPage({
             {name}
           </h1>
 
-          <PersonQuote
-            quote={quoteMarked}
-            className={`${bodyFont} mb-8 text-xl leading-relaxed text-ink/80`}
-          />
+          {quoteMarked && (
+            <PersonQuote
+              quote={quoteMarked}
+              className={`${bodyFont} mb-8 text-xl leading-relaxed text-ink/80`}
+            />
+          )}
 
           {person.status === "pending" && (
             // TODO: 訪談完成後於此補上完整人物側寫內容

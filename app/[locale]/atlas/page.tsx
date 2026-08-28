@@ -66,13 +66,13 @@ export default async function AtlasPage({
   ];
 
   return (
-    <main id="main-content" className="px-6 py-24 md:px-[15%] md:py-32">
+    <main id="main-content" className="px-6 py-32 md:px-[10%] md:py-48">
       <h1
-        className={`${headingFont} mb-4 text-balance text-3xl font-bold md:text-5xl`}
+        className={`${headingFont} mb-6 max-w-4xl text-balance text-4xl font-bold leading-[1.15] md:text-6xl`}
       >
         {dict.atlas.title}
       </h1>
-      <p className={`${bodyFont} mb-16 max-w-xl text-ink/70`}>
+      <p className={`${bodyFont} mb-20 max-w-xl text-ink/70 md:mb-28`}>
         {dict.atlas.intro}
       </p>
 
@@ -87,7 +87,7 @@ export default async function AtlasPage({
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span
-                className={`${headingFont} text-balance text-xl font-bold transition-colors group-hover:text-accent md:text-2xl`}
+                className={`${headingFont} text-balance text-2xl font-bold transition-colors group-hover:text-accent md:text-3xl`}
               >
                 {entry.title}
               </span>

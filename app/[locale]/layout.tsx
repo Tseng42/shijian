@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_TC, Noto_Serif_TC, Inter, Fraunces } from "next/font/google";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -9,7 +9,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 import { SoundProvider } from "@/components/SoundProvider";
 import BackgroundTexture from "@/components/BackgroundTexture";
-import PageTransition from "@/components/PageTransition";
+import TideProgress from "@/components/TideProgress";
+import ExperienceCta from "@/components/ExperienceCta";
 
 const notoSansTC = Noto_Sans_TC({
   subsets: ["latin"],
@@ -42,6 +43,10 @@ const inter = Inter({
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
+
+export const viewport: Viewport = {
+  themeColor: "#EDEFEA",
+};
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -91,7 +96,7 @@ export default async function LocaleLayout({
     >
       <body className="bg-stone text-ink antialiased">
         <BackgroundTexture />
-        <PageTransition />
+        <TideProgress />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-stone"
@@ -107,7 +112,7 @@ export default async function LocaleLayout({
               translate="no"
               className="font-heading-zh text-lg font-black transition-colors hover:text-accent"
             >
-              拾間{" "}
+              拾間{" "}
               <span className="font-heading-en text-sm font-normal italic">
                 ShiJian
               </span>
@@ -146,12 +151,7 @@ export default async function LocaleLayout({
               >
                 {dict.nav.about}
               </Link>
-              <Link
-                href={`/${locale}/experience`}
-                className="font-body-en inline-flex min-h-11 items-center rounded-full border border-ink/30 px-4 text-sm uppercase tracking-wide text-ink/70 transition-colors hover:border-accent hover:text-accent"
-              >
-                {dict.nav.experience}
-              </Link>
+              <ExperienceCta locale={locale} label={dict.nav.experience} />
             </nav>
           </header>
 

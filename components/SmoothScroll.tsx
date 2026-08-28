@@ -18,7 +18,9 @@ export default function SmoothScroll({
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const lenis = new Lenis({ duration: 1.2 });
+    // duration 越長，畫面跟實際捲動輸入的落差越明顯——像 Story 那種畫面本身
+    // 大幅度變化的效果，落差感會被放大。調短讓畫面更貼著使用者捲到哪裡。
+    const lenis = new Lenis({ duration: 0.7 });
     lenis.on("scroll", ScrollTrigger.update);
 
     const syncLenis = (time: number) => lenis.raf(time * 1000);

@@ -1,43 +1,43 @@
 {
-  "title_zh": "潛水技藝",
-  "title_en": "Diving Craft",
-  "intro_zh": "佔位文字：概述海女潛水裝備與下潛週期，待補充真實研究內容。",
-  "intro_en": "Placeholder text outlining diving gear and the dive cycle — to be replaced with verified research content.",
+  "title_zh": "採集技藝",
+  "title_en": "Gathering Craft",
+  "intro_zh": "台灣的海洋採集者沒有標準工具，一切就地取材：畚箕改裝的手把、釣具店買來的網袋、修剪過的不鏽鋼板、甚至湯匙與牛排刀。從備裝、判潮、下水採集，到上岸後長達數週的反覆泡曬，每一個環節都是幾十年身體經驗累積出來的判斷。",
+  "intro_en": "Taiwan's ocean gatherers have no standard toolkit — everything is improvised from what's at hand: a winnowing basket refitted with a handle, a net bag from the tackle shop, a trimmed sheet of stainless steel, even spoons and steak knives. From gearing up and reading the tide, to gathering underwater, to weeks of repeated soaking and sun-drying back on shore, every stage rests on judgment built over decades of bodily experience.",
   "steps": [
     {
-      "key": "enter",
-      "label_zh": "下水",
-      "label_en": "Enter Water",
-      "text_zh": "佔位文字，待補充裝備與準備動作說明。",
-      "text_en": "Placeholder text — gear and preparation details pending."
+      "key": "gear",
+      "label_zh": "備裝",
+      "label_en": "Gear Up",
+      "text_zh": "早期的蛙鏡由長輩手工製作，以牛角磨製成框，用柏油（瀝青）黏合玻璃，連繩子都是手工編織；現在多改用一般泳鏡。戴蛙鏡前會先包上一塊絨布或碎布，一來防止長頭髮散落遮擋視線，二來增加摩擦力、避免蛙鏡在水中滑落。鞋子從自己編織的草鞋，換成防滑效果較好的溯溪鞋加釘鞋。海女也會自製防曬防寒頭套，並用「香」在頭套上燒出鼻孔與耳朵的洞，以利排壓與呼吸。",
+      "text_en": "Early goggles were handmade by elders: frames ground from ox horn, glass sealed with tar, even the cords hand-braided. Today most use ordinary swimming goggles. Before putting them on, gatherers wrap their head in a piece of felt or scrap cloth — partly to keep long hair from drifting across their eyes, partly to add friction so the goggles don't slip off underwater. Footwear has shifted from hand-woven straw sandals to river-tracing shoes with studded soles. Gatherers also sew their own sun-and-cold hoods, burning nostril and ear holes into them with a stick of incense so they can equalize pressure and breathe."
     },
     {
-      "key": "descend",
-      "label_zh": "潛降",
-      "label_en": "Descend",
-      "text_zh": "佔位文字，待補充潛降技巧說明。",
-      "text_en": "Placeholder text — descent technique pending."
+      "key": "tide",
+      "label_zh": "判潮",
+      "label_en": "Read the Tide",
+      "text_zh": "大潮與小潮決定潮間帶外露的面積，再結合海流觀測與長年累積的風向經驗，判斷何時能安全下水。採集也跟著生物週期走：2 到 4 月採青苔、髮菜，4 到 7 月是石花菜盛產期，8 月之後轉為麒麟菜或海膽。",
+      "text_en": "Spring versus neap tides determine how much of the intertidal zone is exposed; combined with current observation and years of accumulated wind-reading, this is what tells a gatherer when it's safe to enter the water. The harvest follows biological cycles too: moss and fat choy from February to April, peak agar season from April to July, then sea fingers or sea urchin from August onward."
     },
     {
       "key": "gather",
       "label_zh": "採集",
       "label_en": "Gather",
-      "text_zh": "佔位文字，待補充採集石花菜等作業內容。",
-      "text_en": "Placeholder text — gathering practice (e.g. agar seaweed) pending."
+      "text_zh": "工具全是就地取材。「螺勾」是前端帶鉤頭的長型金屬工具，早期用黑鐵、現在多改不鏽鋼，用來勾出岩縫中的海膽；「石蚵鎚」由海女自行修剪不鏽鋼板、用石頭搗出凹洞後組裝，使用時半站半蹲，在石頭上刮取野生石蚵；有些海菜附著得極緊、用手拔不起來，就得靠刮刀刮下、再刮進畚箕裡。採集網袋綁在腰後，一邊採一邊往後塞；冬天採海菜時則改用自製的小布袋，以防被海浪沖走。拔除海菜時會留意角度以避免傷及根部，部分區域也存在不成文的禁採期，讓資源得以休養生息。",
+      "text_en": "Every tool is improvised. The luogou is a long metal rod with a hooked tip — once black iron, now usually stainless — used to hook sea urchins out of rock crevices. The oyster hammer is assembled by the gatherers themselves from trimmed stainless sheet, dented into shape with a stone; working in a half-standing crouch, they scrape wild rock oysters off the stone. Some seaweeds cling too tightly to pull by hand, so a scraper blade is used to shear them loose and sweep them into a winnowing basket. The collecting net is tied at the small of the back, so gatherers can stuff their catch behind them as they work; in winter they switch to a small hand-sewn cloth bag that won't be swept away by waves. Seaweed is pulled at an angle that spares the roots, and in some areas unwritten closed seasons let the grounds recover."
     },
     {
-      "key": "breathe",
-      "label_zh": "換氣",
-      "label_en": "Surface for Air",
-      "text_zh": "佔位文字，待補充換氣節奏說明。",
-      "text_en": "Placeholder text — breathing rhythm pending."
+      "key": "process",
+      "label_zh": "泡曬",
+      "label_en": "Soak & Sun-Dry",
+      "text_zh": "剛採下的石花菜是深紫、深褐色的，腥味重，得經過俗稱「七泡七曬」的工序：用大量淡水反覆揉搓、洗掉細沙與鹽分，再鋪曬在岸邊廣場。隨著藻紅素逐步分解，顏色從深紫褐轉為棕紅、淺咖啡、土黃，再到鵝黃、米黃，最後成為亮麗的米白色，聞起來帶有類似乾草的清香。過程中要把黏在一起的菜團撥開，確保每一根都能均勻受光；若中途淋到雨，石花菜會轉綠、發霉、腥味加重，整道工序高度仰賴天氣配合。",
+      "text_en": "Freshly gathered agar is deep purple-brown and strongly briny. It goes through what's locally called \"seven soaks, seven sun-dries\": kneaded repeatedly in plenty of fresh water to wash out sand and salt, then spread across an open coastal square to dry. As the red pigment breaks down, the color shifts from deep purple-brown through russet, light coffee, and earthy yellow, to pale yellow and cream, finally arriving at a bright rice-white that smells faintly of dry hay. Clumped tangles must be pulled apart so every strand catches light evenly. Rain partway through turns the batch green, moldy, and stronger-smelling — the whole process depends on the weather cooperating."
     },
     {
-      "key": "return",
-      "label_zh": "上岸",
-      "label_en": "Return to Shore",
-      "text_zh": "佔位文字，待補充上岸與整理流程說明。",
-      "text_en": "Placeholder text — return and wrap-up process pending."
+      "key": "finish",
+      "label_zh": "敲打與出貨",
+      "label_en": "Beat & Sell",
+      "text_zh": "曬乾後還要用大木棍反覆敲打，破壞纖維並剔除附著在上面的鈣質沉澱物，避免煮出來的石花凍有雜質；有些海女則依靠汽機車輪子輔助處理。長年使用下來，工具上會印上使用者自己的手部痕跡。成品或自行在路邊擺攤販售，或批發給中藥房、食品廠等盤商收購，近年也有部分朝觀光體驗轉型。",
+      "text_en": "Once dried, the agar is beaten repeatedly with a heavy wooden club to break down its fibers and knock off the calcium deposits clinging to it, so the finished jelly stays free of grit; some gatherers press car or scooter wheels into service instead. Over years of use, the tools take on the imprint of their owner's hands. The finished product is sold at roadside stalls, wholesaled to traditional pharmacies and food processors, or — increasingly in recent years — folded into tourism experiences."
     }
   ]
 }

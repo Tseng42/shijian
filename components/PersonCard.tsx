@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { Person } from "@/lib/content/people";
 import type { Locale } from "@/lib/i18n/config";
 import { useSound } from "./SoundProvider";
@@ -34,12 +34,26 @@ export default function PersonCard({
   const nameColor = variant === "onDark" ? "text-stone" : "text-ink";
   const quoteColor = variant === "onDark" ? "text-stone/70" : "text-ink/60";
   const { enabled: soundEnabled } = useSound();
+  const prefersReducedMotion = useReducedMotion();
+
+  const rotateVariants = prefersReducedMotion
+    ? { rest: { rotate: 0 }, hover: { rotate: 0 } }
+    : { rest: { rotate: baseRotation }, hover: { rotate: 0 } };
+  const shadowVariants = prefersReducedMotion
+    ? { rest: {}, hover: {} }
+    : {
+        rest: { boxShadow: "0 0px 0px 0px rgba(34,38,43,0)" },
+        hover: { boxShadow: "0 24px 48px -12px rgba(34,38,43,0.45)" },
+      };
+  const scaleVariants = prefersReducedMotion
+    ? { rest: { scale: 1 }, hover: { scale: 1 } }
+    : { rest: { scale: 1 }, hover: { scale: 1.06 } };
 
   return (
     <MotionLink
       href={`/${locale}/people/${person.slug}`}
       className={`block outline-none focus-visible:ring-2 focus-visible:ring-accent ${className}`}
-      variants={{ rest: { rotate: baseRotation }, hover: { rotate: 0 } }}
+      variants={rotateVariants}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       initial="rest"
       whileHover="hover"
@@ -48,15 +62,12 @@ export default function PersonCard({
       onFocus={() => soundEnabled && playHoverTick()}
     >
       <motion.div
-        variants={{
-          rest: { boxShadow: "0 0px 0px 0px rgba(27,26,23,0)" },
-          hover: { boxShadow: "0 24px 48px -12px rgba(27,26,23,0.45)" },
-        }}
+        variants={shadowVariants}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="relative aspect-[3/4] overflow-hidden bg-stone"
       >
         <motion.div
-          variants={{ rest: { scale: 1 }, hover: { scale: 1.06 } }}
+          variants={scaleVariants}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="h-full w-full"
         >
@@ -74,9 +85,11 @@ export default function PersonCard({
         <p className={`${nameFont} ${nameColor} text-balance text-lg font-bold`}>
           {name}
         </p>
-        <p className={`${quoteFont} ${quoteColor} mt-1 line-clamp-2 text-sm`}>
-          {quote}
-        </p>
+        {quote && (
+          <p className={`${quoteFont} ${quoteColor} mt-1 line-clamp-2 text-sm`}>
+            {quote}
+          </p>
+        )}
       </div>
     </MotionLink>
   );

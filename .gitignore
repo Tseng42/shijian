@@ -31,6 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local tooling state (process ids, ports, session tokens — machine-local, not for version control)
+.impeccable/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

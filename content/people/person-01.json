@@ -1,9 +1,9 @@
 {
   "slug": "person-01",
-  "name_zh": "工作室創辦人（本名待補）",
-  "name_en": "Studio Founder (name pending)",
-  "quote_zh": "佔位引言，待訪談完成後替換。",
-  "quote_en": "Placeholder quote, to be replaced after interviews are complete.",
+  "name_zh": "吳函恩",
+  "name_en": "Han-en Wu",
+  "quote_zh": "「海女」這個說法其實是受日韓影響，台灣早期沒有這個稱呼。現在我們比較常說「海洋採集者」——因為潮間帶採集不是女生專屬，男生也會下去抓龍蝦、海膽。",
+  "quote_en": "The term \"sea-women\" is really shaped by Japanese and Korean usage — Taiwan didn't historically use it. These days we tend to say \"ocean gatherers\" instead, since intertidal gathering isn't limited to women; men go out for lobster and sea urchin too.",
   "photo": "/placeholder-person.svg",
   "status": "pending"
 }

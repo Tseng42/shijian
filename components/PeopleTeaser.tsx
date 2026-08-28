@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import PersonCard from "@/components/PersonCard";
+import ImgStack, { type ImgStackRef } from "@/components/ui/img-stack";
+import type { CarouselItem } from "@/components/ui/box-carousel";
 import type { Person } from "@/lib/content/people";
 import type { Locale } from "@/lib/i18n/config";
+import { useSound } from "./SoundProvider";
+import { playHoverTick } from "@/lib/sound";
+import { usePressFeedback } from "@/lib/hooks/use-press-feedback";
 
 type PeopleTeaserProps = {
   locale: Locale;
@@ -14,7 +16,18 @@ type PeopleTeaserProps = {
   eyebrow: string;
   viewAllLabel: string;
   pendingLabel: string;
+  prevLabel: string;
+  nextLabel: string;
+  carouselLabel: string;
+  carouselInstructions: string;
 };
+
+// 維持跟人物照片一致的 3:4 直式比例，尺寸隨螢幕寬度分級放大。
+function getCarouselSize(width: number) {
+  if (width < 640) return { width: 260, height: 347 };
+  if (width < 1024) return { width: 380, height: 507 };
+  return { width: 460, height: 613 };
+}
 
 export default function PeopleTeaser({
   locale,
@@ -22,99 +35,96 @@ export default function PeopleTeaser({
   eyebrow,
   viewAllLabel,
   pendingLabel,
+  prevLabel,
+  nextLabel,
+  carouselLabel,
+  carouselInstructions,
 }: PeopleTeaserProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const { enabled: soundEnabled } = useSound();
+  const carouselRef = useRef<ImgStackRef>(null);
+  const [size, setSize] = useState(() => getCarouselSize(0));
+  const prevPress = usePressFeedback();
+  const nextPress = usePressFeedback();
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReducedMotion || !sectionRef.current || !trackRef.current)
-      return;
+    const update = () => setSize(getCarouselSize(window.innerWidth));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 等中文字體就緒、版面高度穩定後再建立 pin，避免用 fallback 字體量出的
-    // 過期高度算出錯誤的 pin 起訖位置（會造成捲動時跳位，見 SmoothScroll 的說明）。
-    let ctx: gsap.Context | undefined;
-    let cancelled = false;
-
-    document.fonts.ready.then(() => {
-      if (cancelled || !sectionRef.current || !trackRef.current) return;
-
-      ctx = gsap.context(() => {
-        const track = trackRef.current!;
-        const scrollDistance = track.scrollWidth - window.innerWidth;
-        if (scrollDistance <= 0) return;
-
-        // 捲動越快、整排卡片越往捲動方向輕輕傾斜，停下來就回正——
-        // 用 quickTo 讓每次取樣之間有緩衝，不會每幀硬切造成抖動。
-        const skewTo = gsap.quickTo(track, "skewX", {
-          duration: 0.4,
-          ease: "power3",
-        });
-
-        gsap.to(track, {
-          x: -scrollDistance,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: () => `+=${scrollDistance}`,
-            scrub: 0.6,
-            pin: true,
-            invalidateOnRefresh: true,
-            // 卡片景深：離目前捲動進度越遠的卡片，微微轉向越多，純數學算法，
-            // 不讀版面尺寸（避免每個 tick 都觸發 layout reflow）。
-            onUpdate: (self) => {
-              const cards = track.children;
-              const count = cards.length;
-              if (count <= 1) return;
-              for (let i = 0; i < count; i++) {
-                const cardProgress = i / (count - 1);
-                const deviation = self.progress - cardProgress;
-                const rotateY = gsap.utils.clamp(-12, 12, deviation * -40);
-                gsap.set(cards[i], { rotateY });
-              }
-              skewTo(gsap.utils.clamp(-4, 4, self.getVelocity() / -300));
-            },
-            onLeave: () => skewTo(0),
-            onLeaveBack: () => skewTo(0),
-          },
-        });
-      }, sectionRef);
-    });
-
-    return () => {
-      cancelled = true;
-      ctx?.revert();
+  // 這裡沒有帶 linkUrl：堆疊卡片本身用點擊/拖曳來換下一張，不做點圖跳轉——
+  // 兩種手勢搶同一次點擊會衝突。要看特定人物的完整頁面，走下面的「查看全部」。
+  const items: CarouselItem[] = people.map((person) => {
+    const name = locale === "zh" ? person.name_zh : person.name_en;
+    return {
+      id: person.slug,
+      type: "image",
+      src: person.photo,
+      alt: name,
+      caption: name,
+      badge: person.status === "pending" ? pendingLabel : undefined,
     };
-  }, [people.length]);
+  });
 
   return (
-    <section ref={sectionRef} className="overflow-hidden bg-ink py-24 text-stone">
+    <section className="overflow-hidden bg-ink py-24 text-stone">
       <div className="mb-10 px-6 md:px-16">
         <h2 className="font-body-en text-xs uppercase tracking-widest text-stone/50">
           {eyebrow}
         </h2>
       </div>
 
-      <div
-        ref={trackRef}
-        style={{ perspective: "1000px" }}
-        className="flex gap-6 px-6 motion-reduce:flex-wrap motion-reduce:overflow-x-auto md:px-16"
-      >
-        {people.map((person) => (
-          <PersonCard
-            key={person.slug}
-            person={person}
-            locale={locale}
-            pendingLabel={pendingLabel}
+      <div className="flex flex-col items-center gap-6">
+        {size.width > 0 && (
+          <ImgStack
+            ref={carouselRef}
+            items={items}
+            width={size.width}
+            height={size.height}
             variant="onDark"
-            className="w-64 shrink-0 md:w-80"
+            ariaLabel={carouselLabel}
+            instructions={carouselInstructions}
+            onIndexChange={() => soundEnabled && playHoverTick()}
           />
-        ))}
+        )}
+
+        <p aria-hidden="true" className="font-body-en text-[11px] uppercase tracking-wide text-stone/40">
+          {carouselInstructions}
+        </p>
+
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={() => carouselRef.current?.prev()}
+            {...prevPress.handlers}
+            aria-label={prevLabel}
+            className={`flex h-11 w-11 items-center justify-center rounded-full border transition-[color,border-color,border-width,transform] duration-150 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-stone/40 hover:text-stone active:scale-[0.94] active:border-2 active:border-stone active:text-stone ${
+              prevPress.pressed
+                ? "scale-[0.94] border-2 border-stone text-stone"
+                : "border-stone/20 text-stone/70"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => carouselRef.current?.next()}
+            {...nextPress.handlers}
+            aria-label={nextLabel}
+            className={`flex h-11 w-11 items-center justify-center rounded-full border transition-[color,border-color,border-width,transform] duration-150 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-stone/40 hover:text-stone active:scale-[0.94] active:border-2 active:border-stone active:text-stone ${
+              nextPress.pressed
+                ? "scale-[0.94] border-2 border-stone text-stone"
+                : "border-stone/20 text-stone/70"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div className="mt-10 px-6 md:px-16">

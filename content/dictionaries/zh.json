@@ -21,7 +21,11 @@
     "viewAll": "查看所有人物誌",
     "pendingBadge": "訪談籌備中",
     "pendingDetail": "此人物訪談尚未完成，完整內容將於後續更新。",
-    "backToList": "← 回人物誌列表"
+    "backToList": "← 回人物誌列表",
+    "prev": "上一位",
+    "next": "下一位",
+    "carouselLabel": "人物輪播",
+    "carouselInstructions": "使用左右方向鍵切換，或用滑鼠／觸控拖曳旋轉。"
   },
   "craft": {
     "eyebrow": "工藝",
@@ -46,7 +50,9 @@
     "notConfigured": "表單尚未設定完成，請聯繫網站管理者。"
   },
   "map": {
-    "eyebrow": "北海岸"
+    "eyebrow": "北海岸",
+    "photoPending": "照片籌備中",
+    "viewOnMap": "在 Google 地圖上查看"
   },
   "a11y": {
     "skipToContent": "跳至主要內容"

@@ -1,30 +1,22 @@
 [
   {
-    "id": "point-1",
-    "name_zh": "據點一（座標待確認）",
-    "name_en": "Location 1 (coordinates TBD)",
-    "x": 28,
-    "y": 38
+    "id": "heping-island",
+    "name_zh": "基隆・和平島",
+    "name_en": "Heping Island, Keelung"
   },
   {
-    "id": "point-2",
-    "name_zh": "據點二（座標待確認）",
-    "name_en": "Location 2 (coordinates TBD)",
-    "x": 48,
-    "y": 26
+    "id": "badouzi",
+    "name_zh": "基隆・八斗子",
+    "name_en": "Badouzi, Keelung"
   },
   {
-    "id": "point-3",
-    "name_zh": "據點三（座標待確認）",
-    "name_en": "Location 3 (coordinates TBD)",
-    "x": 66,
-    "y": 44
+    "id": "maoao",
+    "name_zh": "貢寮・卯澳",
+    "name_en": "Mao'ao, Gongliao"
   },
   {
-    "id": "point-4",
-    "name_zh": "據點四（座標待確認）",
-    "name_en": "Location 4 (coordinates TBD)",
-    "x": 80,
-    "y": 60
+    "id": "magang",
+    "name_zh": "貢寮・馬岡",
+    "name_en": "Magang, Gongliao"
   }
 ]

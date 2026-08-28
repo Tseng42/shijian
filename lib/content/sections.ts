@@ -28,8 +28,6 @@ export type Location = {
   id: string;
   name_zh: string;
   name_en: string;
-  x: number;
-  y: number;
 };
 
 export type LegacyContent = {

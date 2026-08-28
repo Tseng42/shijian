@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePressFeedback } from "@/lib/hooks/use-press-feedback";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -18,12 +19,13 @@ type Labels = {
 };
 
 const inputClass =
-  "w-full border-b border-ink/20 bg-transparent py-2 font-body-en text-ink outline-none transition-colors focus-visible:border-accent";
+  "w-full border-b border-ink/20 bg-transparent py-2 font-body-en text-ink caret-accent outline-none transition-colors focus-visible:border-accent";
 const labelClass = "font-body-en mb-1 block text-xs uppercase tracking-wide text-ink/50";
 
 export default function ExperienceForm({ labels }: { labels: Labels }) {
   const [status, setStatus] = useState<Status>("idle");
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+  const { pressed, handlers } = usePressFeedback();
 
   if (!formId) {
     return <p className="text-sm text-ink/50">{labels.notConfigured}</p>;
@@ -85,6 +87,7 @@ export default function ExperienceForm({ labels }: { labels: Labels }) {
           type="email"
           required
           autoComplete="email"
+          spellCheck={false}
           className={inputClass}
         />
       </div>
@@ -125,8 +128,35 @@ export default function ExperienceForm({ labels }: { labels: Labels }) {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="font-body-en rounded border border-ink px-5 py-2 text-sm transition-colors hover:border-accent hover:text-accent disabled:opacity-50"
+        {...handlers}
+        className={`font-body-en inline-flex items-center gap-2 rounded border px-5 py-2 text-sm transition-[color,border-color,border-width,transform] duration-150 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-accent hover:text-accent disabled:opacity-50 active:scale-[0.94] active:border-2 active:border-accent active:text-accent ${
+          pressed ? "scale-[0.94] border-2 border-accent text-accent" : "border-ink"
+        }`}
       >
+        {status === "submitting" && (
+          <svg
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+            className="h-3.5 w-3.5 animate-spin motion-reduce:animate-none"
+          >
+            <circle
+              cx="8"
+              cy="8"
+              r="6.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeOpacity="0.25"
+            />
+            <path
+              d="M14.5 8a6.5 6.5 0 0 0-6.5-6.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </svg>
+        )}
         {status === "submitting" ? labels.submitting : labels.submit}
       </button>
     </form>

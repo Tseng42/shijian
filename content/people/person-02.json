@@ -1,9 +1,9 @@
 {
   "slug": "person-02",
-  "name_zh": "當地阿嬤（本名待補）",
-  "name_en": "Local Grandma (name pending)",
-  "quote_zh": "佔位引言，待訪談完成後替換。",
-  "quote_en": "Placeholder quote, to be replaced after interviews are complete.",
+  "name_zh": "當地阿嬤（應受訪者要求，不公開本名）",
+  "name_en": "Local Grandma (name withheld at interviewee's request)",
+  "quote_zh": "",
+  "quote_en": "",
   "photo": "/placeholder-person.svg",
   "status": "pending"
 }

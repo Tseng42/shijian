@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-// 全站固定背景：淡灰點陣（檔案紙感），游標移動時附近的點會被硃紅色遮罩蓋過去，
-// 像蓋章一樣。只做背景本身的互動，不碰文字——文字維持一般排版。
+// 全站固定背景：淡灰點陣（檔案紙感），游標移動時附近的點會被天青色暈染蓋過去，
+// 像水漬在瓷面上散開。只做背景本身的互動，不碰文字——文字維持一般排版。
+// （色碼對應現在的 ink/accent token——這層原本寫死在上上一代硃紅印章色票，
+// 換色票時漏掉沒跟著改，全站每頁都在跑，所以顏色不對特別顯眼。）
 export default function BackgroundTexture() {
   const [interactive, setInteractive] = useState(false);
   const layerRef = useRef<HTMLDivElement>(null);
@@ -57,7 +59,7 @@ export default function BackgroundTexture() {
       className="pointer-events-none fixed inset-0 -z-10"
       style={{
         backgroundImage:
-          "radial-gradient(rgba(26,26,26,0.08) 1px, transparent 1px)",
+          "radial-gradient(rgba(34,38,43,0.08) 1px, transparent 1px)",
         backgroundSize: "20px 20px",
       }}
     >
@@ -69,7 +71,7 @@ export default function BackgroundTexture() {
               position: "absolute",
               inset: 0,
               backgroundImage:
-                "radial-gradient(rgba(178,58,46,0.4) 1px, transparent 1px)",
+                "radial-gradient(rgba(62,100,114,0.4) 1px, transparent 1px)",
               backgroundSize: "20px 20px",
               "--mx": "50%",
               "--my": "50%",

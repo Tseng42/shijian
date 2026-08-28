@@ -26,14 +26,14 @@ export default async function HistoryPage({
   const bodyFont = locale === "zh" ? "font-body-zh" : "font-body-en";
 
   return (
-    <main id="main-content" className="px-6 py-24 md:px-[15%] md:py-32">
+    <main id="main-content" className="px-6 py-32 md:px-[10%] md:py-48">
       <h1
-        className={`${headingFont} mb-16 text-balance text-3xl font-bold md:text-5xl`}
+        className={`${headingFont} mb-20 max-w-4xl text-balance text-4xl font-bold leading-[1.15] md:mb-28 md:text-6xl`}
       >
         {title}
       </h1>
 
-      <div className="space-y-16">
+      <div className="space-y-24 md:space-y-32">
         {history.sections.map((section) => {
           const heading =
             locale === "zh" ? section.heading_zh : section.heading_en;
@@ -41,9 +41,9 @@ export default async function HistoryPage({
             locale === "zh" ? section.paragraphs_zh : section.paragraphs_en;
 
           return (
-            <section key={section.id}>
+            <section key={section.id} className="max-w-3xl">
               <h2
-                className={`${headingFont} mb-4 text-balance text-xl font-bold md:text-2xl`}
+                className={`${headingFont} mb-6 text-balance text-2xl font-bold md:text-3xl`}
               >
                 {heading}
               </h2>

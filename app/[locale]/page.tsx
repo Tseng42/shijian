@@ -46,6 +46,10 @@ export default async function Home({
         eyebrow={dict.people.eyebrow}
         viewAllLabel={dict.people.viewAll}
         pendingLabel={dict.people.pendingBadge}
+        prevLabel={dict.people.prev}
+        nextLabel={dict.people.next}
+        carouselLabel={dict.people.carouselLabel}
+        carouselInstructions={dict.people.carouselInstructions}
       />
 
       <Craft
@@ -59,6 +63,8 @@ export default async function Home({
         locale={locale}
         locations={locations}
         eyebrow={dict.map.eyebrow}
+        photoPendingLabel={dict.map.photoPending}
+        viewOnMapLabel={dict.map.viewOnMap}
       />
 
       <Legacy locale={locale} content={legacy} />
