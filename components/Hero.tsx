@@ -132,7 +132,14 @@ export default function Hero({
         }
       >
         <div ref={frameRef} className="absolute inset-0 h-full w-full">
-          <div ref={parallaxRef} className="absolute inset-0 h-full w-full">
+          {/* Sized a bit past frameRef's own edges (not inset-0) so the water
+              shader's own torn-edge fade — 2% of its own box, see
+              water-ripple-image.tsx's edge_alpha — lands outside frameRef's
+              clip-path instead of inside it. Otherwise the two edges don't
+              line up: the shader fades out before reaching the clip
+              boundary, and the gap between them shows frameRef's plain
+              background as a second, unintended frame around the photo. */}
+          <div ref={parallaxRef} className="absolute -inset-[6%]">
             <WaterRippleImage src="/hero-magang.jpg" playing={motionEnabled && wavesPlaying} />
           </div>
 
