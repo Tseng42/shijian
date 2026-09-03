@@ -17,9 +17,12 @@ const SUN_DRY_COLORS = [
   "#F5EDD6",
 ];
 
+// 備裝、判潮、泡曬、敲打都是在岸上做的，五個步驟裡只有「採集」是真的下水——
+// 讓它單獨用強調色跳出來，其餘四步全部維持淺色，對比落在唯一有意義的地方，
+// 不是輪流展示三個色票。
 const STEP_TONE: Array<"stone" | "ink" | "accent"> = [
   "stone",
-  "ink",
+  "stone",
   "accent",
   "stone",
   "stone",

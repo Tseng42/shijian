@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getAbout } from "@/lib/content/sections";
 import type { Locale } from "@/lib/i18n/config";
+import RevealParagraphs from "@/components/RevealParagraphs";
 
 export async function generateMetadata({
   params: { locale },
@@ -45,16 +46,10 @@ export default async function AboutPage({
               <h2 className={`${headingFont} mb-6 text-balance text-2xl font-bold md:text-3xl`}>
                 {heading}
               </h2>
-              <div className="space-y-4">
-                {paragraphs.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className={`${bodyFont} text-lg leading-loose text-ink/80`}
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              <RevealParagraphs
+                paragraphs={paragraphs}
+                className={`${bodyFont} text-lg leading-loose text-ink/80`}
+              />
               {list && list.length > 0 && (
                 <ul className="mt-4 list-inside list-disc space-y-2">
                   {list.map((item, index) => (

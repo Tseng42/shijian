@@ -42,8 +42,8 @@ export default function PersonCard({
   const shadowVariants = prefersReducedMotion
     ? { rest: {}, hover: {} }
     : {
-        rest: { boxShadow: "0 0px 0px 0px rgba(34,38,43,0)" },
-        hover: { boxShadow: "0 24px 48px -12px rgba(34,38,43,0.45)" },
+        rest: { boxShadow: "0 0px 0px 0px rgba(15,22,32,0)" },
+        hover: { boxShadow: "0 24px 48px -12px rgba(15,22,32,0.45)" },
       };
   const scaleVariants = prefersReducedMotion
     ? { rest: { scale: 1 }, hover: { scale: 1 } }

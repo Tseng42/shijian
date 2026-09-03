@@ -87,6 +87,9 @@ export default function Hero({
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
+      // Starting frame: tried larger (0.92 scale × a 2%/3% inset) so the
+      // opening stood on its own before any scroll — reverted per the user's
+      // call, back to the original small-card distance.
       gsap.set(frameRef.current, {
         scale: 0.62,
         clipPath: "inset(9% 14% round 28px)",
@@ -156,7 +159,7 @@ export default function Hero({
           {/* TODO: 替換為正式 Logo SVG，檔案將命名為 /public/logo.svg，單色墨色版本 */}
           <h1
             translate="no"
-            className="font-heading-zh text-balance text-6xl font-black text-stone [text-shadow:0_0_60px_rgba(62,100,114,0.65)] md:text-9xl"
+            className="font-heading-zh text-balance text-6xl font-black text-stone [text-shadow:0_0_60px_rgba(224,86,43,0.65)] md:text-9xl"
           >
             拾間
             <span className="font-heading-en mt-3 block text-2xl font-normal italic text-stone/90 md:text-5xl">

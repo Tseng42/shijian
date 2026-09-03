@@ -163,10 +163,12 @@ export function ScrollBurnText({
 
     const update = (p: number) => {
       const count = total.current;
-      // One slot per block. The runway stops with the last block at the moment
-      // its burn would start, so the piece ends on that copy whole rather than
-      // on a frame of ash.
-      const t = -LEAD + p * (count - 1 + LEAD + BURN_AT);
+      // One slot per block, including the last: the runway now carries all
+      // the way through the last block's own burn (was BURN_AT, stopping the
+      // instant the last block finished growing, deliberately so the piece
+      // ended on that copy whole rather than ash — reverted per the user's
+      // call, so every block gets the same full grow-then-burn cycle).
+      const t = -LEAD + p * (count + LEAD);
       let front = 0;
 
       blockRefs.current.forEach((block, i) => {
@@ -331,7 +333,7 @@ export function ScrollBurnText({
                     // as the site's one deliberate exception to the 3-token
                     // rule; borrowing one of its stops here would break that).
                     textShadow:
-                      "calc(var(--ab) * -1px) 0 rgb(62 100 114 / 0.75), calc(var(--ab) * 1px) 0 rgb(34 38 43 / 0.6)",
+                      "calc(var(--ab) * -1px) 0 rgb(224 86 43 / 0.75), calc(var(--ab) * 1px) 0 rgb(15 22 32 / 0.6)",
                   } as React.CSSProperties
                 }
               >

@@ -83,7 +83,7 @@ export default function Story({ locale, title, paragraphs }: StoryProps) {
             className="pointer-events-none absolute left-1/2 top-1/2 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50"
             style={{
               background:
-                "radial-gradient(circle, rgba(62,100,114,0.4) 0%, rgba(62,100,114,0.1) 46%, rgba(62,100,114,0) 72%)",
+                "radial-gradient(circle, rgba(224,86,43,0.4) 0%, rgba(224,86,43,0.1) 46%, rgba(224,86,43,0) 72%)",
             }}
           />
         }

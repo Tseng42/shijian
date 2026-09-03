@@ -16,8 +16,8 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#22262B",
-          color: "#EDEFEA",
+          backgroundColor: "#0F1620",
+          color: "#F0F3F2",
         }}
       >
         <div style={{ display: "flex", fontSize: 108, fontWeight: 700 }}>
