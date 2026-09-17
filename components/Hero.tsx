@@ -92,7 +92,11 @@ export default function Hero({
       // call, back to the original small-card distance.
       gsap.set(frameRef.current, {
         scale: 0.62,
-        clipPath: "inset(9% 14% round 28px)",
+        // 上下不對稱（14% / 4%，卡片本身高度跟之前的 9%/9% 一樣沒變）：
+        // nav 是透明疊圖、不占版面高度，但視覺上還是吃掉頂端一塊空間，
+        // 卡片若真的置中於整個 100vh，扣掉 nav 後看起來就會偏上。
+        // 往下收 5% 讓卡片在「扣掉 nav 的可視範圍」裡置中。
+        clipPath: "inset(14% 14% 4% 14% round 28px)",
       });
 
       const tl = gsap.timeline({
@@ -159,7 +163,7 @@ export default function Hero({
 
         <div
           ref={titleRef}
-          className={`absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center ${
+          className={`absolute inset-0 flex translate-y-[5%] flex-col items-center justify-center gap-4 px-6 text-center ${
             !motionEnabled ? "animate-hero-fade-in" : ""
           }`}
         >
