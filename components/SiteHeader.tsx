@@ -90,17 +90,17 @@ export default function SiteHeader({
           <Link href={`/${locale}/people`} className={linkClass}>
             {dict.nav.people}
           </Link>
-        </nav>
-
-        <div className="justify-self-center">{logo}</div>
-
-        <div className="flex items-center gap-x-6">
           <Link href={`/${locale}/history`} className={linkClass}>
             {dict.nav.history}
           </Link>
           <Link href={`/${locale}/ecology`} className={linkClass}>
             {dict.nav.ecology}
           </Link>
+        </nav>
+
+        <div className="justify-self-center">{logo}</div>
+
+        <div className="flex items-center gap-x-6">
           <Link href={`/${locale}/about`} className={linkClass}>
             {dict.nav.about}
           </Link>
