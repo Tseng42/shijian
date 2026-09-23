@@ -22,7 +22,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        "heading-zh": ["var(--font-noto-sans-tc)", "sans-serif"],
+        "heading-zh": ["var(--font-noto-serif-tc)", "serif"],
         "body-zh": ["var(--font-noto-serif-tc)", "serif"],
         "heading-en": ["var(--font-fraunces)", "serif"],
         "body-en": ["var(--font-inter)", "sans-serif"],

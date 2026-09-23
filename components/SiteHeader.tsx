@@ -94,7 +94,7 @@ export default function SiteHeader({
 
         <div className="justify-self-center">{logo}</div>
 
-        <div className="flex items-center justify-self-end gap-x-6">
+        <div className="flex items-center gap-x-6">
           <Link href={`/${locale}/history`} className={linkClass}>
             {dict.nav.history}
           </Link>

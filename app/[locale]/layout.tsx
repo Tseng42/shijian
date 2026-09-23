@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_TC, Noto_Serif_TC, Inter, Fraunces } from "next/font/google";
+import { Noto_Serif_TC, Inter, Fraunces } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { locales, type Locale } from "@/lib/i18n/config";
@@ -11,16 +11,9 @@ import BackgroundTexture from "@/components/BackgroundTexture";
 import TideProgress from "@/components/TideProgress";
 import SiteHeader from "@/components/SiteHeader";
 
-const notoSansTC = Noto_Sans_TC({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-  variable: "--font-noto-sans-tc",
-  display: "swap",
-});
-
 const notoSerifTC = Noto_Serif_TC({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "700", "900"],
   variable: "--font-noto-serif-tc",
   display: "swap",
 });
@@ -91,7 +84,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale === "zh" ? "zh-Hant" : "en"}
-      className={`${notoSansTC.variable} ${notoSerifTC.variable} ${fraunces.variable} ${inter.variable}`}
+      className={`${notoSerifTC.variable} ${fraunces.variable} ${inter.variable}`}
     >
       <body className="bg-stone text-ink antialiased">
         <BackgroundTexture />
