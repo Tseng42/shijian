@@ -80,10 +80,10 @@ export default function SiteHeader({
         </nav>
       </div>
 
-      {/* 桌機：logo 置中、選單對稱分兩側夾住 logo——2026 質感／得獎網站常見的
-          agency-style 排版（見 Awwwards 搜尋結果），取代原本 logo 左、選單右的split版 */}
-      <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
-        <nav aria-label="Primary" className="flex items-center justify-end gap-x-6">
+      {/* 桌機：logo 靠左、選單＋按鈕靠右 */}
+      <div className="hidden md:flex md:items-center md:justify-between">
+        {logo}
+        <nav aria-label="Primary" className="flex items-center gap-x-6">
           <Link href={`/${locale}`} className={linkClass}>
             {dict.nav.home}
           </Link>
@@ -96,11 +96,6 @@ export default function SiteHeader({
           <Link href={`/${locale}/ecology`} className={linkClass}>
             {dict.nav.ecology}
           </Link>
-        </nav>
-
-        <div className="justify-self-center">{logo}</div>
-
-        <div className="flex items-center gap-x-6">
           <Link href={`/${locale}/about`} className={linkClass}>
             {dict.nav.about}
           </Link>
@@ -109,7 +104,7 @@ export default function SiteHeader({
             label={dict.nav.experience}
             variant={isHome ? "onDark" : "onLight"}
           />
-        </div>
+        </nav>
       </div>
     </header>
   );
