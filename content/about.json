@@ -7,10 +7,12 @@
       "heading_zh": "研究方法",
       "heading_en": "Research Methodology",
       "paragraphs_zh": [
-        "佔位文字：說明田野調查範圍、受訪者選擇方式與資料蒐集流程，待正式研究內容補充。"
+        "受訪對象的接觸方式，是自行上網搜尋曙旅文化工作室的聯絡資訊，主動詢問是否願意受訪。已完成的訪談對象為工作室創辦人與馬岡在地一位海女（罔市阿嬤），時間為 2026 年 5 月。除訪談外，也曾實地走訪馬岡海岸，但現場觀察的參考價值有限，內容仍以訪談內容為主。",
+        "研究初期也查閱過一些相關學術文獻與書籍作為背景參考，但目前未保留完整書目資訊，尚無法列出正式引用來源，會在後續研究階段補齊。"
       ],
       "paragraphs_en": [
-        "Placeholder text outlining the fieldwork scope, interviewee selection process, and data collection procedure — to be completed with the finalized research methodology."
+        "Interviewees were reached by searching online for Shulu Culture Studio's contact information and directly asking whether they'd be willing to be interviewed. Interviews completed so far were with the studio's founder and a local sea-woman from Magang (Grandma Wǎng-shì), in May 2026. Beyond the interviews, the coastline at Magang was also visited in person, though the on-site observation added limited reference value — the content here still draws mainly from the interviews.",
+        "Some general academic literature and books were also consulted for background during early research, but complete bibliographic records weren't kept, so they can't yet be listed as formal citations. This will be filled in during a later research phase."
       ]
     },
     {
@@ -18,10 +20,12 @@
       "heading_zh": "訪談倫理聲明",
       "heading_en": "Interview Ethics Statement",
       "paragraphs_zh": [
-        "佔位文字：說明受訪者知情同意、化名處理原則與資料使用範圍，待正式倫理聲明內容補充。"
+        "目前已進行的訪談，原始目的是作為本專題的研究紀錄，受訪當下尚未確定會發展成網站，因此並未明確告知受訪者內容會公開發布於網路上。",
+        "在正式回頭取得受訪者對「網站公開」的同意之前，本站對已受訪但尚未完成公開同意確認的對象採取保守處理：不刊登個人真實全名，僅以工作室名稱或既有稱呼呈現。我們預計安排後續訪談，屆時會明確說明網站用途並取得正式同意，再更新為完整版本。"
       ],
       "paragraphs_en": [
-        "Placeholder text covering informed consent, the use of pseudonyms, and the scope of data use — to be completed with the finalized ethics statement."
+        "The interviews conducted so far were originally intended as research records for this project. At the time, it hadn't yet been decided that this would become a public website, so interviewees weren't explicitly told the content would be published online.",
+        "Until consent for public web publication is formally confirmed, this site takes a conservative approach for interviewees whose consent hasn't yet been reconfirmed for that purpose: personal full names aren't published, and only studio names or existing forms of address are used. A follow-up interview is planned, at which point web use will be clearly explained and formal consent obtained before this section is updated in full."
       ]
     },
     {
@@ -29,13 +33,19 @@
       "heading_zh": "資料來源",
       "heading_en": "Data Sources",
       "paragraphs_zh": [
-        "佔位文字：列出本專題引用之文獻與資料出處，待正式書目資料補充。"
+        "本專題目前的資料來源以實地訪談與媒體報導為主，詳細出處列於下方。學術文獻方面雖曾在研究初期查閱參考，但未保留可供正式引用的完整書目，將於後續研究階段補齊。"
       ],
       "paragraphs_en": [
-        "Placeholder text listing references and data sources cited in this project — to be completed with the finalized bibliography."
+        "This project's sources currently consist mainly of field interviews and media reporting, listed below. Academic literature was consulted informally during early research, but complete bibliographic records weren't retained; formal citations will be added in a later research phase."
       ],
-      "list_zh": ["（文獻待補）", "（文獻待補）"],
-      "list_en": ["(Reference pending)", "(Reference pending)"]
+      "list_zh": [
+        "田野訪談：曙旅文化工作室創辦人、馬岡在地海女（罔市阿嬤），2026 年 5 月",
+        "公共電視新聞報導，2026 年 6 月（新北市貢寮區馬岡海女相關報導）"
+      ],
+      "list_en": [
+        "Field interviews: founder of Shulu Culture Studio, and a local sea-woman from Magang (Grandma Wǎng-shì), May 2026",
+        "PTS (Public Television Service) News report, June 2026 (covering sea-women in Magang, Gongliao District, New Taipei)"
+      ]
     }
   ]
 }
