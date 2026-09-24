@@ -22,12 +22,32 @@
       "heading_zh": "傳統生態知識",
       "heading_en": "Traditional Ecological Knowledge",
       "paragraphs_zh": [
-        "海洋採集有一套與生物週期同步的日曆：2 到 4 月採青苔、髮菜，4 到 7 月是石花菜的盛產期，8 月之後則轉為採集麒麟菜或海膽。潮汐與海流的判讀——大潮小潮決定潮間帶外露面積、加上海流觀測與風向經驗——是決定何時能安全下水的關鍵知識。",
+        "海洋採集有一套與生物週期同步的採集日曆（見下方時間軸）。潮汐與海流的判讀——大潮小潮決定潮間帶外露面積、加上海流觀測與風向經驗——是決定何時能安全下水的關鍵知識。",
         "採集者對場域也有自發性的維護共識：拔除海菜時會留意角度以避免傷及根部，部分區域也存在不成文的禁採期，讓資源得以休養生息。"
       ],
       "paragraphs_en": [
-        "Gathering follows a calendar synced to biological cycles: moss and fat choy from February to April, peak agar season from April to July, then a shift to sea fingers or sea urchin from August onward. Reading tides and currents — how spring versus neap tides expose different amounts of the intertidal zone, combined with current observation and wind experience — is core knowledge for judging when it's safe to enter the water.",
+        "Gathering follows a calendar synced to biological cycles (see the timeline below). Reading tides and currents — how spring versus neap tides expose different amounts of the intertidal zone, combined with current observation and wind experience — is core knowledge for judging when it's safe to enter the water.",
         "Gatherers also maintain an informal stewardship of their own harvesting grounds: pulling seaweed at an angle that avoids damaging the roots, and in some areas, unwritten closed seasons that let the resource recover."
+      ],
+      "timeline": [
+        {
+          "period_zh": "2–4 月",
+          "period_en": "Feb–Apr",
+          "label_zh": "青苔、髮菜",
+          "label_en": "Moss, fat choy"
+        },
+        {
+          "period_zh": "4–7 月",
+          "period_en": "Apr–Jul",
+          "label_zh": "石花菜盛產期",
+          "label_en": "Peak agar season"
+        },
+        {
+          "period_zh": "8 月後",
+          "period_en": "Aug onward",
+          "label_zh": "麒麟菜、海膽",
+          "label_en": "Sea fingers, sea urchin"
+        }
       ]
     },
     {
@@ -35,13 +55,17 @@
       "heading_zh": "產業危機",
       "heading_en": "Industry Crisis",
       "paragraphs_zh": [
-        "根據 2026 年 6 月公共電視新聞報導，新北市貢寮區馬岡漁村目前僅剩 4 位海女仍在採集石花菜，其中 72 歲的吳鳳嬌表示：「我們大概都 70 幾了，再做也沒有幾年了，希望有一些年輕人回來傳承下去。」自 1980 年代起，隨著石花菜產業本身式微、潛水技術演進，加上沿岸海洋資源逐漸枯竭，海女技藝的傳承出現斷層；目前全台海女人數推估不足百人，多集中於北海岸一帶。",
-        "相較於日本、韓國已將海女文化列為無形文化資產，濟州島海女文化甚至已列入聯合國教科文組織非物質文化遺產名錄，台灣海女文化至今尚未取得官方文化資產身份，制度性的保存與支持仍待補足。（此段引用自公開新聞報導，非本專題訪談內容，建議正式發布前自行查證原始報導。）"
+        "根據 2026 年 6 月公共電視新聞報導，新北市貢寮區馬岡漁村目前僅剩 4 位海女仍在採集石花菜。自 1980 年代起，隨著石花菜產業本身式微、潛水技術演進，加上沿岸海洋資源逐漸枯竭，海女技藝的傳承出現斷層；目前全台海女人數推估不足百人，多集中於北海岸一帶。",
+        "相較於日本、韓國已將海女文化列為無形文化資產，濟州島海女文化甚至已列入聯合國教科文組織非物質文化遺產名錄，台灣海女文化至今尚未取得官方文化資產身份，制度性的保存與支持仍待補足。（此段引用自公開新聞報導，非本專題訪談內容，已查證原始報導網址見關於本專題頁資料來源。）"
       ],
       "paragraphs_en": [
-        "According to a June 2026 PTS (Public Television Service) News report, Magang fishing village in New Taipei's Gongliao District now has only four sea-women still gathering agar seaweed. Among them, 72-year-old Wu Feng-chiao said: \"We're all in our seventies now — there aren't many years left in us. We hope some young people will come back and carry this on.\" Since the 1980s, the decline of the agar industry itself, advances in diving technology, and dwindling coastal marine resources have opened a generational gap in passing down the craft; Taiwan's sea-women are now estimated at fewer than 100 nationwide, concentrated mostly along the north coast.",
-        "Unlike Japan and South Korea, which have designated sea-women culture as intangible cultural heritage — Jeju Island's haenyeo culture is even inscribed on UNESCO's Intangible Cultural Heritage list — Taiwan's sea-women culture has yet to receive official cultural-asset status, and institutional preservation and support remain lacking. (This paragraph is drawn from public news coverage, not this project's own interviews — please verify against the original report before final publication.)"
-      ]
+        "According to a June 2026 PTS (Public Television Service) News report, Magang fishing village in New Taipei's Gongliao District now has only four sea-women still gathering agar seaweed. Since the 1980s, the decline of the agar industry itself, advances in diving technology, and dwindling coastal marine resources have opened a generational gap in passing down the craft; Taiwan's sea-women are now estimated at fewer than 100 nationwide, concentrated mostly along the north coast.",
+        "Unlike Japan and South Korea, which have designated sea-women culture as intangible cultural heritage — Jeju Island's haenyeo culture is even inscribed on UNESCO's Intangible Cultural Heritage list — Taiwan's sea-women culture has yet to receive official cultural-asset status, and institutional preservation and support remain lacking. (This paragraph is drawn from public news coverage, not this project's own interviews — the verified source link is listed under Data Sources on the About page.)"
+      ],
+      "quote_zh": "我們大概都 70 幾了，再做也沒有幾年了，希望有一些年輕人回來傳承下去。",
+      "quote_en": "We're all in our seventies now — there aren't many years left in us. We hope some young people will come back and carry this on.",
+      "quoteAttribution_zh": "吳鳳嬌，72 歲，馬岡海女",
+      "quoteAttribution_en": "Wu Feng-chiao, 72, sea-woman from Magang"
     }
   ]
 }

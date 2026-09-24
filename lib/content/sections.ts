@@ -39,6 +39,13 @@ export type LegacyContent = {
   cta_en: string;
 };
 
+export type TimelineEntry = {
+  period_zh: string;
+  period_en: string;
+  label_zh: string;
+  label_en: string;
+};
+
 export type AboutSection = {
   id: string;
   heading_zh: string;
@@ -47,6 +54,11 @@ export type AboutSection = {
   paragraphs_en: string[];
   list_zh?: string[];
   list_en?: string[];
+  quote_zh?: string;
+  quote_en?: string;
+  quoteAttribution_zh?: string;
+  quoteAttribution_en?: string;
+  timeline?: TimelineEntry[];
 };
 
 export type AboutContent = {
