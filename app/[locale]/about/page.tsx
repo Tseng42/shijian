@@ -3,6 +3,7 @@ import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getAbout } from "@/lib/content/sections";
 import type { Locale } from "@/lib/i18n/config";
 import RevealParagraphs from "@/components/RevealParagraphs";
+import { keepNumberUnitTogether } from "@/lib/utils";
 
 export async function generateMetadata({
   params: { locale },
@@ -57,7 +58,7 @@ export default async function AboutPage({
                       key={index}
                       className={`${bodyFont} text-sm text-ink/60`}
                     >
-                      {item}
+                      {keepNumberUnitTogether(item)}
                     </li>
                   ))}
                 </ul>

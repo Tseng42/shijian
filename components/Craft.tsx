@@ -4,6 +4,7 @@ import Link from "next/link";
 import FlowArt, { FlowSection } from "@/components/ui/flow-scroll";
 import type { CraftContent } from "@/lib/content/sections";
 import type { Locale } from "@/lib/i18n/config";
+import { keepNumberUnitTogether } from "@/lib/utils";
 
 // 七泡七曬的真實色階（跟 TideProgress 用的是同一組資料），只在「泡曬」這個
 // 步驟出現——顏色本身就是那道工序的紀錄，不是隨手挑的裝飾漸層。
@@ -55,7 +56,7 @@ export default function Craft({
             {title}
           </h2>
           <p className={`${bodyFont} max-w-xl text-lg leading-loose text-stone/75 md:text-xl`}>
-            {intro}
+            {keepNumberUnitTogether(intro)}
           </p>
         </FlowSection>
 
@@ -87,7 +88,7 @@ export default function Craft({
                 {label}
               </h3>
               <p className={`${bodyFont} max-w-2xl text-base leading-relaxed md:text-lg ${mutedClass}`}>
-                {text}
+                {keepNumberUnitTogether(text)}
               </p>
 
               {isSunDry && (

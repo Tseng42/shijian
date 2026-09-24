@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { keepNumberUnitTogether } from "@/lib/utils";
 
 export default function RevealParagraphs({
   paragraphs,
@@ -65,10 +66,10 @@ export default function RevealParagraphs({
   }, [paragraphs]);
 
   return (
-    <div ref={containerRef} className="space-y-4">
+    <div ref={containerRef} className="space-y-6">
       {paragraphs.map((paragraph, index) => (
         <p key={index} data-reveal-paragraph className={className}>
-          {paragraph}
+          {keepNumberUnitTogether(paragraph)}
         </p>
       ))}
     </div>

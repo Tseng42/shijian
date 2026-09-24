@@ -10,6 +10,14 @@ body {
   font-family: var(--font-inter), sans-serif;
 }
 
+/* 中文排版：數字（如 2026、5）跟後面的中文單位字（年、月、歲、位…）
+   預設會被瀏覽器當成可斷行點，容易斷出「2026 年 5」換行「月的訪談」
+   這種怪異斷句。keep-all 讓這類數字＋中文序列不會被硬拆開。 */
+:lang(zh-Hant) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 a,
 button {
   touch-action: manipulation;
