@@ -46,6 +46,7 @@ export default async function Home({
         eyebrow={dict.people.eyebrow}
         viewAllLabel={dict.people.viewAll}
         pendingLabel={dict.people.pendingBadge}
+        photoPendingLabel={dict.people.photoPendingBadge}
         prevLabel={dict.people.prev}
         nextLabel={dict.people.next}
         carouselLabel={dict.people.carouselLabel}

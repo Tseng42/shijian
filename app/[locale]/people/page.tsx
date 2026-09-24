@@ -44,6 +44,7 @@ export default async function PeopleListPage({
               person={person}
               locale={locale}
               pendingLabel={dict.people.pendingBadge}
+              photoPendingLabel={dict.people.photoPendingBadge}
               baseRotation={rotations[index % rotations.length]}
             />
           </div>

@@ -14,6 +14,7 @@ type PersonCardProps = {
   person: Person;
   locale: Locale;
   pendingLabel: string;
+  photoPendingLabel: string;
   variant?: "onLight" | "onDark";
   className?: string;
   baseRotation?: number;
@@ -23,12 +24,18 @@ export default function PersonCard({
   person,
   locale,
   pendingLabel,
+  photoPendingLabel,
   variant = "onLight",
   className = "",
   baseRotation = 0,
 }: PersonCardProps) {
   const name = locale === "zh" ? person.name_zh : person.name_en;
+  const role = locale === "zh" ? person.role_zh : person.role_en;
   const quote = locale === "zh" ? person.quote_zh : person.quote_en;
+  // status:"pending" 原本只代表「還沒有真實照片」，但受訪與否是看 quote
+  // 有沒有內容——兩者意義不同，訪談完成的人不該再顯示「訪談籌備中」。
+  const hasQuote = Boolean(person.quote_zh || person.quote_en);
+  const badgeLabel = hasQuote ? photoPendingLabel : pendingLabel;
   const nameFont = locale === "zh" ? "font-heading-zh" : "font-heading-en";
   const quoteFont = locale === "zh" ? "font-body-zh" : "font-body-en";
   const nameColor = variant === "onDark" ? "text-stone" : "text-ink";
@@ -76,12 +83,17 @@ export default function PersonCard({
 
         {person.status === "pending" && (
           <span className="font-body-en absolute left-3 top-3 bg-stone px-2 py-1 text-[10px] uppercase tracking-wide text-ink">
-            {pendingLabel}
+            {badgeLabel}
           </span>
         )}
       </motion.div>
 
       <div className="mt-4">
+        {role && (
+          <p className="font-body-en mb-1 text-[11px] uppercase tracking-widest text-accent">
+            {role}
+          </p>
+        )}
         <p className={`${nameFont} ${nameColor} text-balance text-lg font-bold`}>
           {name}
         </p>

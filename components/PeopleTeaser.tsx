@@ -16,6 +16,7 @@ type PeopleTeaserProps = {
   eyebrow: string;
   viewAllLabel: string;
   pendingLabel: string;
+  photoPendingLabel: string;
   prevLabel: string;
   nextLabel: string;
   carouselLabel: string;
@@ -35,6 +36,7 @@ export default function PeopleTeaser({
   eyebrow,
   viewAllLabel,
   pendingLabel,
+  photoPendingLabel,
   prevLabel,
   nextLabel,
   carouselLabel,
@@ -63,7 +65,10 @@ export default function PeopleTeaser({
       src: person.photo,
       alt: name,
       caption: name,
-      badge: person.status === "pending" ? pendingLabel : undefined,
+      badge:
+        person.status === "pending"
+          ? (person.quote_zh || person.quote_en ? photoPendingLabel : pendingLabel)
+          : undefined,
     };
   });
 

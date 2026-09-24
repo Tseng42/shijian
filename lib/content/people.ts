@@ -5,6 +5,8 @@ export type Person = {
   slug: string;
   name_zh: string;
   name_en: string;
+  role_zh?: string;
+  role_en?: string;
   quote_zh: string;
   quote_en: string;
   photo: string;
