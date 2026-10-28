@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import FlowArt, { FlowSection } from "@/components/ui/flow-scroll";
+import DiveGauge from "@/components/DiveGauge";
 import type { CraftContent } from "@/lib/content/sections";
 import type { Locale } from "@/lib/i18n/config";
 import { keepNumberUnitTogether } from "@/lib/utils";
@@ -32,11 +33,15 @@ export default function Craft({
   content,
   eyebrow,
   experienceCta,
+  depthLabel,
+  depthSource,
 }: {
   locale: Locale;
   content: CraftContent;
   eyebrow: string;
   experienceCta: string;
+  depthLabel: string;
+  depthSource: string;
 }) {
   const title = locale === "zh" ? content.title_zh : content.title_en;
   const intro = locale === "zh" ? content.intro_zh : content.intro_en;
@@ -65,6 +70,7 @@ export default function Craft({
           const text = locale === "zh" ? step.text_zh : step.text_en;
           const tone = STEP_TONE[index] ?? "stone";
           const isSunDry = step.key === "process";
+          const isDive = step.key === "gather";
 
           const toneClass =
             tone === "ink"
@@ -76,7 +82,14 @@ export default function Craft({
           const numberClass = tone === "stone" ? "text-ink/30" : "text-stone/40";
 
           return (
-            <FlowSection key={step.key} aria-label={label} className={toneClass}>
+            <FlowSection
+              key={step.key}
+              aria-label={label}
+              // 下水那一頁多停一個螢幕：先潛到 5 公尺，下一頁才轉進來。
+              holdScreens={isDive ? 1 : 0}
+              // 下水那一頁右側要留給水柱，內文往左收，不讓字壓在水柱上。
+              className={`${toneClass} ${isDive ? "pr-20 md:pr-[22%]" : ""}`}
+            >
               <p
                 className={`font-body-en tabular-nums text-xs uppercase tracking-[0.3em] ${numberClass}`}
               >
@@ -90,6 +103,15 @@ export default function Craft({
               <p className={`${bodyFont} max-w-2xl text-base leading-relaxed md:text-lg ${mutedClass}`}>
                 {keepNumberUnitTogether(text)}
               </p>
+
+              {isDive && (
+                <>
+                  <p className={`font-body-en max-w-2xl text-xs leading-relaxed ${numberClass}`}>
+                    {depthSource}
+                  </p>
+                  <DiveGauge depthLabel={depthLabel} />
+                </>
+              )}
 
               {isSunDry && (
                 <div

@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import WaterRippleImage from "@/components/ui/water-ripple-image";
+import TideLine, { type TideLabels } from "@/components/TideLine";
 import { usePressFeedback } from "@/lib/hooks/use-press-feedback";
+import type { Locale } from "@/lib/i18n/config";
 
 // 顆粒疊層：4x4 的 feTurbulence 雜訊磚，用 background-repeat 貼滿畫面。
 // 這是唯一給「持續有生命感」用的裝飾層，跟捲動、滑鼠都無關，隨時在動一點點。
@@ -15,10 +17,14 @@ export default function Hero({
   scrollHint,
   pauseMotionLabel,
   playMotionLabel,
+  tideLabels,
+  locale,
 }: {
   scrollHint: string;
   pauseMotionLabel: string;
   playMotionLabel: string;
+  tideLabels: TideLabels;
+  locale: Locale;
 }) {
   const [motionEnabled, setMotionEnabled] = useState(false);
   const [wavesPlaying, setWavesPlaying] = useState(true);
@@ -28,6 +34,7 @@ export default function Hero({
   const titleRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
   const grainRef = useRef<HTMLDivElement>(null);
+  const tideRef = useRef<HTMLDivElement>(null);
 
   const toggleWaves = () => setWavesPlaying((prev) => !prev);
 
@@ -117,7 +124,10 @@ export default function Hero({
         frameRef.current,
         { scale: 1, clipPath: "inset(0% 0% round 0px)", ease: "none" },
         0
-      ).to(titleRef.current, { opacity: 0, y: -32, ease: "none" }, 0);
+      )
+        .to(titleRef.current, { opacity: 0, y: -32, ease: "none" }, 0)
+        // 判潮線跟標題一起退場：照片放大到滿版後，不要讓資訊卡蓋在照片上。
+        .to(tideRef.current, { opacity: 0, ease: "none" }, 0);
     }, sectionRef);
 
     return () => ctx.revert();
@@ -180,6 +190,15 @@ export default function Hero({
           <p className="font-body-en text-xs uppercase tracking-[0.3em] text-stone/70">
             {scrollHint}
           </p>
+        </div>
+
+        {/* 左下角，跟右下角的暫停鈕同一條基線；right-20 讓出暫停鈕的位置，手機上不會疊到。 */}
+        <div
+          ref={tideRef}
+          className="absolute left-6 right-20 z-10 max-w-[17rem]"
+          style={{ bottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
+        >
+          <TideLine labels={tideLabels} locale={locale} />
         </div>
 
         {motionEnabled && (

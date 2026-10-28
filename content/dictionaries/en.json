@@ -14,7 +14,18 @@
   "hero": {
     "scrollHint": "Scroll to explore",
     "pauseMotion": "Pause background motion",
-    "playMotion": "Play background motion"
+    "playMotion": "Play background motion",
+    "tide": {
+      "label": "Tide at Magang now",
+      "rising": "Rising",
+      "falling": "Falling",
+      "nextHigh": "Next high",
+      "nextLow": "Next low",
+      "source": "CWA tide forecast (Gongliao), interpolated between high and low tides"
+    }
+  },
+  "story": {
+    "stage": "Soak & sun-dry · stage {n} / {total}"
   },
   "people": {
     "eyebrow": "People",
@@ -30,7 +41,9 @@
   },
   "craft": {
     "eyebrow": "Craft",
-    "experienceCta": "Book a Craft Experience"
+    "experienceCta": "Book a Craft Experience",
+    "depthLabel": "Depth",
+    "depthSource": "Gelidium grows on reef rock from the low-tide line down to about 5 m. Source: New Taipei City Government (CNA, 2025)"
   },
   "atlas": {
     "title": "Site Atlas",

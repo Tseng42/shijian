@@ -18,6 +18,11 @@ export interface FlowSectionProps {
   style?: React.CSSProperties;
   children: React.ReactNode;
   "aria-label"?: string;
+  /**
+   * 這一頁轉正之後，下一頁進來之前要多停幾個螢幕高度的捲動距離。給頁內還有
+   * 自己的捲動動畫要跑完的那一頁用（例如採集頁的下潛深度計）。
+   */
+  holdScreens?: number;
 }
 
 export function FlowSection({
@@ -25,27 +30,42 @@ export function FlowSection({
   style = {},
   children,
   "aria-label": ariaLabel,
+  holdScreens = 0,
 }: FlowSectionProps) {
   return (
-    // className（背景色／文字色）放在會轉動的 inner div 上，不是這層——
-    // 放這層的話，色塊在轉動動畫開始前就已經整片鋪滿、完全靜止不動，
-    // 只有裡面的文字在轉，看起來就是「文字轉進來，色塊早就在那了」。
-    <section
-      data-flow-section
-      aria-label={ariaLabel}
-      className="relative min-h-screen w-full overflow-hidden"
-    >
-      <div
-        data-flow-inner
-        className={cn(
-          "flow-inner relative flex min-h-screen w-full flex-col justify-center gap-6 px-6 py-24 will-change-transform md:px-[10%]",
-          className,
-        )}
-        style={{ transformOrigin: "bottom left", ...style }}
+    <>
+      {/* className（背景色／文字色）放在會轉動的 inner div 上，不是這層——
+          放這層的話，色塊在轉動動畫開始前就已經整片鋪滿、完全靜止不動，
+          只有裡面的文字在轉，看起來就是「文字轉進來，色塊早就在那了」。 */}
+      <section
+        data-flow-section
+        data-flow-hold={holdScreens || undefined}
+        aria-label={ariaLabel}
+        className="relative min-h-screen w-full overflow-hidden"
       >
-        {children}
-      </div>
-    </section>
+        <div
+          data-flow-inner
+          className={cn(
+            "flow-inner relative flex min-h-screen w-full flex-col justify-center gap-6 px-6 py-24 will-change-transform md:px-[10%]",
+            className,
+          )}
+          style={{ transformOrigin: "bottom left", ...style }}
+        >
+          {children}
+        </div>
+        {holdScreens > 0 && (
+          // 停留用的透明空白，放在這一頁「裡面」、內容下方：整頁 pin 住時這段
+          // 不會動，下一頁要等捲過這段才排到畫面底部、開始轉進來，看起來就是
+          // 「停住」。（放在這一頁外面當兄弟元素試過，後面幾頁 pin 的起點會算錯，
+          // 泡曬蓋上來之後採集頁又跑回來。）減少動態時沒有 pin，空白一起收掉。
+          <div
+            aria-hidden="true"
+            className="motion-reduce:!h-0"
+            style={{ height: `${holdScreens * 100}vh` }}
+          />
+        )}
+      </section>
+    </>
   );
 }
 
@@ -102,10 +122,18 @@ export default function FlowArt({
         }
 
         if (i < sections.length - 1) {
+          // 有設停留的那頁，pin 要多撐過後面那段停留空白，下一頁才蓋上來。
+          // 停留的空白在這一頁裡面，所以起點改成「內容的底碰到畫面底」，
+          // 不是整個 section 的底；撐的長度是停留＋下一頁蓋上來的一個螢幕。
+          const hold = Number(section.dataset.flowHold ?? 0);
           ScrollTrigger.create({
             trigger: section,
-            start: "bottom bottom",
-            end: "bottom top",
+            start:
+              hold > 0
+                ? () => `top+=${Math.max(0, inner.offsetHeight - window.innerHeight)} top`
+                : "bottom bottom",
+            end: hold > 0 ? () => `+=${window.innerHeight * (1 + hold)}` : "bottom top",
+            invalidateOnRefresh: hold > 0,
             pin: true,
             pinSpacing: false,
           });

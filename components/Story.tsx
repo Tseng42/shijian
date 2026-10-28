@@ -2,16 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import ScrollBurnText from "@/components/ui/scroll-burn-text";
+import SunFadeText from "@/components/ui/sun-fade-text";
 import type { Locale } from "@/lib/i18n/config";
 
 type StoryProps = {
   locale: Locale;
   title: string;
   paragraphs: string[];
+  /** 「第 {n} 曬 / {total}」這類計數文字，{n}、{total} 會被換掉。 */
+  stageTemplate: string;
 };
 
-export default function Story({ locale, title, paragraphs }: StoryProps) {
+export default function Story({ locale, title, paragraphs, stageTemplate }: StoryProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const headingFont = locale === "zh" ? "font-heading-zh" : "font-heading-en";
@@ -22,7 +24,7 @@ export default function Story({ locale, title, paragraphs }: StoryProps) {
     ).matches;
 
     // 背景一直有一顆極慢的天青色潮汐光暈在呼吸，滑鼠移進來時光暈會懶懶地
-    // 跟過去——呼應「以身體與潮汐對話」這句話本身，而不是純裝飾。放在燒字
+    // 跟過去——呼應「以身體與潮汐對話」這句話本身，而不是純裝飾。放在曬褪字
     // 效果的 backdrop 裡，才會跟著 pin 住的畫面一起固定，不會跟捲動脫節。
     if (!glowRef.current) return;
 
@@ -58,24 +60,27 @@ export default function Story({ locale, title, paragraphs }: StoryProps) {
   }, []);
 
   return (
-    // 沒有 overflow-hidden：這個 class 放在這裡會讓下面 ScrollBurnText 的
+    // 沒有 overflow-hidden：這個 class 放在這裡會讓下面 SunFadeText 的
     // sticky 畫面失效（position: sticky 是跟「最近一個 overflow 不是 visible
     // 的祖先」對齊，一旦這層本身變成那個祖先，畫面就只會跟著頁面正常捲走，
-    // 不會真的固定）。光暈本身已經被 ScrollBurnText 自己的 sticky 容器裁切，
+    // 不會真的固定）。光暈本身已經被 SunFadeText 自己的 sticky 容器裁切，
     // 這層不需要再裁一次。
-    <section ref={sectionRef} className="relative bg-stone">
+    // 深色底：曬褪字是從深紫褐曬到米白，只有在深色底上「曬好」才等於「看清楚」；
+    // 在原本的薄霧白底上，最後一階米白反而會消失。
+    <section ref={sectionRef} className="relative bg-ink">
       <div className="px-6 pt-32 md:px-[10%] md:pt-40">
-        <h2 className="font-body-en text-xs uppercase tracking-[0.3em] text-ink/50">
+        <h2 className="font-body-en text-xs uppercase tracking-[0.3em] text-stone/50">
           {title}
         </h2>
       </div>
 
-      <ScrollBurnText
+      <SunFadeText
         sections={paragraphs}
-        hint={null}
         runway="200vh"
         fontClassName={headingFont}
-        className="bg-transparent"
+        stageLabel={(n, total) =>
+          stageTemplate.replace("{n}", String(n)).replace("{total}", String(total))
+        }
         backdrop={
           <div
             ref={glowRef}

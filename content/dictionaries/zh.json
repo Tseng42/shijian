@@ -14,7 +14,18 @@
   "hero": {
     "scrollHint": "向下捲動",
     "pauseMotion": "暫停背景動態",
-    "playMotion": "播放背景動態"
+    "playMotion": "播放背景動態",
+    "tide": {
+      "label": "馬崗此刻潮位",
+      "rising": "漲潮中",
+      "falling": "退潮中",
+      "nextHigh": "下次滿潮",
+      "nextLow": "下次乾潮",
+      "source": "中央氣象署潮汐預報（貢寮區），依滿乾潮時刻推算"
+    }
+  },
+  "story": {
+    "stage": "七泡七曬 · 第 {n} 曬 / {total}"
   },
   "people": {
     "eyebrow": "人物誌",
@@ -30,7 +41,9 @@
   },
   "craft": {
     "eyebrow": "工藝",
-    "experienceCta": "預約職人體驗"
+    "experienceCta": "預約職人體驗",
+    "depthLabel": "水深",
+    "depthSource": "石花菜生長在礁岩低潮線到水深約 5 公尺的礁石上。資料：新北市政府（中央社，2025）"
   },
   "atlas": {
     "title": "文化網頁地圖",

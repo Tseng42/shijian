@@ -67,9 +67,11 @@ middleware.ts                無 locale 前綴時導向 /zh
      ```
      CWA_API_KEY=你剛取得的授權碼
      ```
-  4. 重啟 `npm run dev`，打開 `http://localhost:3000/api/tide?locationName=貢寮區` 測試
+  4. 重啟 `npm run dev`，打開 `http://localhost:3000/api/tide` 測試，應該會看到貢寮區前後幾天的滿潮／乾潮時刻與潮高
+  5. 部署到 Vercel 時，也要在 Vercel 專案設定的 Environment Variables 加上同一個 `CWA_API_KEY`，再重新部署一次
   - 這支 API 為什麼要走伺服器端 route（`app/api/tide/route.ts`）而不是前端直接呼叫氣象署：金鑰一旦寫進前端程式碼，任何人打開瀏覽器開發者工具就能看到並盜用；走 Next.js API route，金鑰只存在伺服器環境變數裡，瀏覽器完全看不到。
-  - 目前 `LocationName` 這個查詢參數名稱是否正確、實際回傳的 JSON 欄位長怎樣，我還沒有金鑰可以實測——你申請到金鑰後，用瀏覽器打開上面測試網址，把回傳的 JSON 貼給我，我再幫你把資料實際渲染到 Map 頁面。
+  - 首頁 Hero 左下角的「馬崗此刻潮位」卡片（`components/TideLine.tsx`）就是用這支 API。沒有設定金鑰時，卡片整塊不顯示，不會放假資料。
+  - 查詢用 `LocationId=65000260`（新北市貢寮區）。中文的 `LocationName` 參數會被氣象署防火牆擋下，不要改回去。
 - `NEXT_PUBLIC_FORMSPREE_ID`：`/experience` 職人體驗預約表單的送出端點。**免費**，申請步驟：
   1. 到 [formspree.io](https://formspree.io) 免費註冊
   2. 建立一個新表單（New Form），複製它給你的表單 ID（網址或設定頁會顯示，格式類似 `xrgpqwa`）

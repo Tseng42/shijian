@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { SoundProvider } from "@/components/SoundProvider";
 import BackgroundTexture from "@/components/BackgroundTexture";
 import TideProgress from "@/components/TideProgress";
+import PageTransition from "@/components/PageTransition";
 import SiteHeader from "@/components/SiteHeader";
 
 const notoSerifTC = Noto_Serif_TC({
@@ -89,6 +90,7 @@ export default async function LocaleLayout({
       <body className="bg-stone text-ink antialiased">
         <BackgroundTexture />
         <TideProgress />
+        <PageTransition />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-stone"

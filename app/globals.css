@@ -79,3 +79,113 @@ html {
   animation: hero-fade-in 1200ms ease-out both;
 }
 
+/* 判潮線（TideLine.tsx）：資料到了才淡入；浮標在潮位上極輕地上下浮。 */
+@keyframes tide-line-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-tide-line-in {
+  animation: tide-line-in 800ms ease-out both;
+}
+
+@keyframes tide-buoy {
+  0%,
+  100% {
+    margin-top: -1.5px;
+  }
+  50% {
+    margin-top: 1.5px;
+  }
+}
+
+.animate-tide-buoy {
+  animation: tide-buoy 3.2s ease-in-out infinite;
+}
+
+/* 下水（DiveGauge.tsx）：水面透下來的光紋慢慢晃，氣泡從游標往上浮。 */
+@keyframes dive-light {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 14px 0;
+  }
+}
+
+.animate-dive-light {
+  animation: dive-light 6s ease-in-out infinite;
+}
+
+@keyframes dive-bubble {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-44px);
+  }
+}
+
+.animate-dive-bubble {
+  animation: dive-bubble 2.2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tide-line-in,
+  .animate-tide-buoy,
+  .animate-dive-light,
+  .animate-dive-bubble {
+    animation: none;
+  }
+}
+
+
+/* 載入畫面的石花菜（GelidiumSprig.tsx）：主枝先長，小枝依序從分岔點長出來，
+   長好之後整叢在水裡極輕地擺動。 */
+@keyframes gelidium-grow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gelidium-sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+.gelidium-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: gelidium-grow var(--dur) ease-out var(--delay) forwards;
+}
+
+.gelidium-sway {
+  transform-origin: 100px 232px;
+  animation: gelidium-sway 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gelidium-path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+
+  .gelidium-sway {
+    animation: none;
+  }
+}

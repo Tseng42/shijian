@@ -36,9 +36,16 @@ export default async function Home({
         scrollHint={dict.hero.scrollHint}
         pauseMotionLabel={dict.hero.pauseMotion}
         playMotionLabel={dict.hero.playMotion}
+        tideLabels={dict.hero.tide}
+        locale={locale}
       />
 
-      <Story locale={locale} title={storyTitle} paragraphs={storyParagraphs} />
+      <Story
+        locale={locale}
+        title={storyTitle}
+        paragraphs={storyParagraphs}
+        stageTemplate={dict.story.stage}
+      />
 
       <PeopleTeaser
         locale={locale}
@@ -58,6 +65,8 @@ export default async function Home({
         content={craft}
         eyebrow={dict.craft.eyebrow}
         experienceCta={dict.craft.experienceCta}
+        depthLabel={dict.craft.depthLabel}
+        depthSource={dict.craft.depthSource}
       />
 
       <MapSection
