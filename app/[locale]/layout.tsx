@@ -11,6 +11,7 @@ import BackgroundTexture from "@/components/BackgroundTexture";
 import TideProgress from "@/components/TideProgress";
 import PageTransition from "@/components/PageTransition";
 import SiteHeader from "@/components/SiteHeader";
+import { siteUrl } from "@/lib/site-url";
 
 const notoSerifTC = Noto_Serif_TC({
   subsets: ["latin"],
@@ -41,7 +42,6 @@ export const viewport: Viewport = {
   themeColor: "#F0F3F2",
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export async function generateMetadata({
   params: { locale },
