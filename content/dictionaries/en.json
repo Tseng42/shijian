@@ -45,6 +45,12 @@
     "depthLabel": "Depth",
     "depthSource": "Gelidium grows on reef rock from the low-tide line down to about 5 m. Source: New Taipei City Government (CNA, 2025)"
   },
+  "ecology": {
+    "timeline": {
+      "now": "Now · {month}",
+      "rain": "The Sandiao Cape rain gauge next to Magang recorded {mm} mm of rain in the past hour. Gelidium dried in weather like this turns green and goes mouldy."
+    }
+  },
   "atlas": {
     "title": "Site Atlas",
     "intro": "A complete index of ShiJian's content, organized by theme. Select a chapter to continue."
@@ -61,12 +67,32 @@
     "formSubmitting": "Submitting…",
     "formSuccess": "Registered — we'll be in touch soon.",
     "formError": "Something went wrong. Please try again later, or email us directly.",
-    "notConfigured": "This form isn't configured yet — please contact the site owner."
+    "notConfigured": "This form isn't configured yet — please contact the site owner.",
+    "calendar": {
+      "title": "Tides for the next 30 days (Gongliao)",
+      "hint": "On spring-tide days the water drops lowest and the most intertidal zone is exposed.",
+      "pick": "Pick a day to fill in “Preferred timeframe” below.",
+      "spring": "Spring",
+      "mid": "Mid",
+      "neap": "Neap",
+      "low": "Low",
+      "noDaytimeLow": "No daytime low",
+      "season": "Peak gelidium season is April–July; what you can experience may differ in other months.",
+      "disclaimer": "Dates and tides are for reference only — we'll confirm the actual time with you.",
+      "source": "Source: CWA tide forecast (Gongliao District, New Taipei). Low tides shown for 06:00–18:00 only.",
+      "fill": "{weekday} {date} · {range} tide",
+      "fillLow": ", low {times}"
+    }
   },
   "map": {
     "eyebrow": "North Coast",
     "photoPending": "Photo coming soon",
-    "viewOnMap": "View on Google Maps"
+    "viewOnMap": "View on Google Maps",
+    "tide": {
+      "rising": "Rising",
+      "falling": "Falling",
+      "source": "Tide: CWA tide forecasts, interpolated between high and low tides. Mao'ao and Magang share the Gongliao District forecast, so their figures match."
+    }
   },
   "a11y": {
     "skipToContent": "Skip to main content"

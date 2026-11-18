@@ -6,6 +6,7 @@ import { getAllPeople, getPersonBySlug } from "@/lib/content/people";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { locales, type Locale } from "@/lib/i18n/config";
 import PersonQuote from "@/components/PersonQuote";
+import { fixChineseTypography } from "@/lib/utils";
 
 export function generateStaticParams() {
   const people = getAllPeople();
@@ -38,7 +39,9 @@ export default async function PersonPage({
   const name = locale === "zh" ? person.name_zh : person.name_en;
   const role = locale === "zh" ? person.role_zh : person.role_en;
   const quote = locale === "zh" ? person.quote_zh : person.quote_en;
-  const quoteMarked = quote && (locale === "zh" ? `「${quote}」` : `“${quote}”`);
+  // 不手動包一層「」/""：quote 內容常常本來就帶著引號式的術語
+  // （例如「海女」這個說法），外面再包一層會變成「「海女」…雙引號開頭。
+  // 左側 accent 色條的 pull-quote 樣式本身已經足夠標示「這是引言」。
   // status:"pending" 只代表還沒有真實照片；訪談完成與否要看 quote 有沒有內容。
   const hasQuote = Boolean(person.quote_zh || person.quote_en);
   const badgeLabel = hasQuote ? dict.people.photoPendingBadge : dict.people.pendingBadge;
@@ -89,10 +92,10 @@ export default async function PersonPage({
             {name}
           </h1>
 
-          {quoteMarked && (
+          {quote && (
             <div className="mb-8 border-l-2 border-accent pl-6">
               <PersonQuote
-                quote={quoteMarked}
+                quote={fixChineseTypography(quote)}
                 className={`${bodyFont} text-xl leading-relaxed text-ink/80`}
               />
             </div>

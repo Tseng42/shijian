@@ -42,6 +42,11 @@ export type LegacyContent = {
 export type TimelineEntry = {
   period_zh: string;
   period_en: string;
+  /**
+   * 這一段涵蓋的月份（1–12），用來標出「現在」落在哪一段。「8 月後」口述
+   * 沒講到哪個月為止，這裡當成 8 到 12 月；1 月不在任何一段。
+   */
+  months?: number[];
   label_zh: string;
   label_en: string;
 };

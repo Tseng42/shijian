@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "@/lib/i18n/config";
-import type { TideExtreme, TideResponse } from "@/app/api/tide/route";
+import { DAY, TAIPEI_OFFSET, heightAt, type TideExtreme, type TideResponse } from "@/lib/tide";
 
 export type TideLabels = {
   label: string;
@@ -13,33 +13,9 @@ export type TideLabels = {
   source: string;
 };
 
-const HOUR = 60 * 60 * 1000;
-const DAY = 24 * HOUR;
-// 台灣沒有日光節約時間，台北時間固定是 UTC+8。訪客不管在哪個時區，
-// 曲線都畫馬崗當地的「今天」。
-const TAIPEI_OFFSET = 8 * HOUR;
-
 const VIEW_W = 240;
 const VIEW_H = 44;
 const PAD_Y = 6;
-
-/**
- * 兩個滿乾潮之間用半個餘弦補出中間的潮高——潮汐表只給轉折點，這是航海上
- * 從潮汐表推算任意時刻潮高的標準近似法（跟「十二分之一法則」是同一條曲線）。
- */
-function heightAt(extremes: TideExtreme[], t: number): number | null {
-  for (let i = 0; i < extremes.length - 1; i++) {
-    const a = Date.parse(extremes[i].time);
-    const b = Date.parse(extremes[i + 1].time);
-    if (t >= a && t <= b) {
-      const f = (t - a) / (b - a);
-      const ha = extremes[i].heightCm;
-      const hb = extremes[i + 1].heightCm;
-      return ha + (hb - ha) * (1 - Math.cos(Math.PI * f)) / 2;
-    }
-  }
-  return null;
-}
 
 /**
  * 判潮：首頁 Hero 左下角的一條真實潮汐線。曲線是馬崗所在的貢寮區今天整天的

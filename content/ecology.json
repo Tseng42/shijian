@@ -33,18 +33,21 @@
         {
           "period_zh": "2–4 月",
           "period_en": "Feb–Apr",
+          "months": [2, 3, 4],
           "label_zh": "青苔、髮菜",
           "label_en": "Moss, fat choy"
         },
         {
           "period_zh": "4–7 月",
           "period_en": "Apr–Jul",
+          "months": [4, 5, 6, 7],
           "label_zh": "石花菜盛產期",
           "label_en": "Peak agar season"
         },
         {
           "period_zh": "8 月後",
           "period_en": "Aug onward",
+          "months": [8, 9, 10, 11, 12],
           "label_zh": "麒麟菜、海膽",
           "label_en": "Sea fingers, sea urchin"
         }

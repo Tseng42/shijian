@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import type { Locale } from "@/lib/i18n/config";
-import ExperienceForm from "@/components/ExperienceForm";
+import ExperienceBooking from "@/components/ExperienceBooking";
 
 export async function generateMetadata({
   params: { locale },
@@ -34,8 +34,10 @@ export default async function ExperiencePage({
         {dict.experience.intro}
       </p>
 
-      <ExperienceForm
-        labels={{
+      <ExperienceBooking
+        locale={locale}
+        calendarLabels={dict.experience.calendar}
+        formLabels={{
           name: dict.experience.formName,
           email: dict.experience.formEmail,
           timeframe: dict.experience.formTimeframe,

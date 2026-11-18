@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/i18n/config";
 import RevealParagraphs from "@/components/RevealParagraphs";
 import SectionNav from "@/components/SectionNav";
 import SeasonalTimeline from "@/components/SeasonalTimeline";
-import { keepNumberUnitTogether } from "@/lib/utils";
+import { fixChineseTypography } from "@/lib/utils";
 
 export async function generateMetadata({
   params: { locale },
@@ -23,6 +23,7 @@ export default async function EcologyPage({
 }: {
   params: { locale: Locale };
 }) {
+  const dict = await getDictionary(locale);
   const ecology = getEcology();
   const title = locale === "zh" ? ecology.title_zh : ecology.title_en;
   const headingFont = locale === "zh" ? "font-heading-zh" : "font-heading-en";
@@ -74,17 +75,21 @@ export default async function EcologyPage({
                 />
 
                 {section.timeline && (
-                  <SeasonalTimeline entries={section.timeline} locale={locale} />
+                  <SeasonalTimeline
+                    entries={section.timeline}
+                    locale={locale}
+                    labels={dict.ecology.timeline}
+                  />
                 )}
 
                 {quote && (
                   <div className="mt-8 border-l-2 border-accent pl-6">
                     <p className={`${bodyFont} text-xl leading-relaxed text-ink/80`}>
-                      {locale === "zh" ? `「${quote}」` : `“${quote}”`}
+                      {fixChineseTypography(quote)}
                     </p>
                     {quoteAttribution && (
                       <p className="font-body-en mt-3 text-xs uppercase tracking-widest text-ink/40">
-                        {keepNumberUnitTogether(quoteAttribution)}
+                        {fixChineseTypography(quoteAttribution)}
                       </p>
                     )}
                   </div>

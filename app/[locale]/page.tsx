@@ -75,6 +75,7 @@ export default async function Home({
         eyebrow={dict.map.eyebrow}
         photoPendingLabel={dict.map.photoPending}
         viewOnMapLabel={dict.map.viewOnMap}
+        tideLabels={dict.map.tide}
       />
 
       <Legacy locale={locale} content={legacy} />

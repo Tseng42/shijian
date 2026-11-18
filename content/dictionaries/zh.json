@@ -45,6 +45,12 @@
     "depthLabel": "水深",
     "depthSource": "石花菜生長在礁岩低潮線到水深約 5 公尺的礁石上。資料：新北市政府（中央社，2025）"
   },
+  "ecology": {
+    "timeline": {
+      "now": "現在 · {month}",
+      "rain": "馬岡旁的三貂角雨量站，過去一小時下了 {mm} 毫米的雨。這種天氣曬的石花菜會轉綠、發霉。"
+    }
+  },
   "atlas": {
     "title": "文化網頁地圖",
     "intro": "拾間內容的完整索引，依主題分類，點擊前往各篇章。"
@@ -61,12 +67,32 @@
     "formSubmitting": "送出中…",
     "formSuccess": "登記成功，我們會盡快與你聯繫。",
     "formError": "送出失敗，請稍後再試，或直接寄信給我們。",
-    "notConfigured": "表單尚未設定完成，請聯繫網站管理者。"
+    "notConfigured": "表單尚未設定完成，請聯繫網站管理者。",
+    "calendar": {
+      "title": "接下來 30 天的潮汐（貢寮區）",
+      "hint": "大潮的日子退潮最低，露出的潮間帶最多。",
+      "pick": "點一天，會填進下方的「希望預約的時段」。",
+      "spring": "大潮",
+      "mid": "中潮",
+      "neap": "小潮",
+      "low": "乾潮",
+      "noDaytimeLow": "白天無乾潮",
+      "season": "石花菜盛產期是 4–7 月，其他月份能體驗的內容可能不同。",
+      "disclaimer": "日期與潮汐僅供參考，實際時段由我們跟你確認。",
+      "source": "資料：中央氣象署潮汐預報（新北市貢寮區）。乾潮只列 06:00–18:00。",
+      "fill": "{date}（{weekday}）{range}",
+      "fillLow": "，乾潮 {times}"
+    }
   },
   "map": {
     "eyebrow": "北海岸",
     "photoPending": "照片籌備中",
-    "viewOnMap": "在 Google 地圖上查看"
+    "viewOnMap": "在 Google 地圖上查看",
+    "tide": {
+      "rising": "漲潮中",
+      "falling": "退潮中",
+      "source": "潮位：中央氣象署潮汐預報，依滿乾潮時刻推算。卯澳、馬岡同屬貢寮區預報，數字相同。"
+    }
   },
   "a11y": {
     "skipToContent": "跳至主要內容"

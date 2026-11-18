@@ -26,6 +26,8 @@ export interface InteractiveHoverLinkItem {
   image?: { src: string; alt: string };
   /** Shown instead of the floating photo when `image` isn't set yet. */
   pendingLabel?: string;
+  /** Extra inline line under the subheading (phrasing content only — it sits inside the <a>). */
+  meta?: React.ReactNode;
 }
 
 // Adapted from a 21st.dev community recipe ("InteractiveHoverLinks"): a list
@@ -51,7 +53,7 @@ export default function InteractiveHoverLinks({
   );
 }
 
-function LinkRow({ heading, subheading, href, image, pendingLabel }: InteractiveHoverLinkItem) {
+function LinkRow({ heading, subheading, href, image, pendingLabel, meta }: InteractiveHoverLinkItem) {
   const ref = useRef<HTMLAnchorElement>(null);
   const reducedMotion = useReducedMotion();
 
@@ -99,6 +101,7 @@ function LinkRow({ heading, subheading, href, image, pendingLabel }: Interactive
             <span className="mt-1 block text-sm text-ink/60">
               {image ? subheading : pendingLabel}
             </span>
+            {meta && <span className="mt-2 block">{meta}</span>}
           </span>
         </span>
         <ArrowIcon className="h-6 w-6 shrink-0 text-ink/40 group-hover:text-ink" />
@@ -140,6 +143,7 @@ function LinkRow({ heading, subheading, href, image, pendingLabel }: Interactive
         <span className="relative z-10 mt-2 block text-sm text-ink/60">
           {image ? subheading : pendingLabel}
         </span>
+        {meta && <span className="relative z-10 mt-2 block">{meta}</span>}
       </span>
 
       {image && (

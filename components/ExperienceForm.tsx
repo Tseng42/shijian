@@ -22,7 +22,16 @@ const inputClass =
   "w-full border-b border-ink/20 bg-transparent py-2 font-body-en text-ink caret-accent outline-none transition-colors focus-visible:border-accent";
 const labelClass = "font-body-en mb-1 block text-xs uppercase tracking-wide text-ink/50";
 
-export default function ExperienceForm({ labels }: { labels: Labels }) {
+export default function ExperienceForm({
+  labels,
+  timeframe,
+  onTimeframeChange,
+}: {
+  labels: Labels;
+  /** 由上面的潮汐日期條帶進來的時段（ExperienceBooking 管這個狀態），訪客還是可以自己改。 */
+  timeframe?: string;
+  onTimeframeChange?: (value: string) => void;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
   const { pressed, handlers } = usePressFeedback();
@@ -100,6 +109,8 @@ export default function ExperienceForm({ labels }: { labels: Labels }) {
           name="timeframe"
           type="text"
           placeholder={labels.timeframePlaceholder}
+          value={timeframe}
+          onChange={onTimeframeChange ? (event) => onTimeframeChange(event.target.value) : undefined}
           className={inputClass}
         />
       </div>
