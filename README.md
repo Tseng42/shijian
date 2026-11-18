@@ -59,7 +59,7 @@ middleware.ts                無 locale 前綴時導向 /zh
 
 ## 環境變數
 
-- `NEXT_PUBLIC_SITE_URL`：正式網址（例如 `https://shijian-tseng4.vercel.app`），供 `metadataBase`、`sitemap.xml`、`robots.txt`、Open Graph 連結使用。**選填**：沒設定時，部署在 Vercel 上會自動用專案的正式網域（Vercel 系統變數 `VERCEL_PROJECT_PRODUCTION_URL`），本機開發則是 `http://localhost:3000`（見 `lib/site-url.ts`）。之後換成自己的網域、想明確指定時再設定。
+- `NEXT_PUBLIC_SITE_URL`：正式網址（例如 `https://shijian-seven.vercel.app`），供 `metadataBase`、`sitemap.xml`、`robots.txt`、Open Graph 連結使用。**選填**：沒設定時，部署在 Vercel 上會自動用專案的正式網域（Vercel 系統變數 `VERCEL_PROJECT_PRODUCTION_URL`），本機開發則是 `http://localhost:3000`（見 `lib/site-url.ts`）。之後換成自己的網域、想明確指定時再設定。
 - `CWA_API_KEY`：中央氣象署開放資料平臺的 API 授權碼，供 `app/api/tide/route.ts`（潮汐資料代理）使用。**免費**，申請步驟：
   1. 到 [opendata.cwa.gov.tw](https://opendata.cwa.gov.tw) 用 email 註冊會員
   2. 登入後點「會員資訊」→「API 授權碼」→「取得授權碼」，立即產生一組金鑰
