@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 const CWA_ENDPOINT =
   "https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0002-001";
 
-// 三貂角自動雨量站（C0A97，新北市貢寮區三貂角燈塔旁），離馬岡最近的雨量站。
+// 三貂角自動雨量站（C0A97，新北市貢寮區三貂角燈塔旁），離馬崗最近的雨量站。
 // 站號出自氣象署雨量站清單 https://www.cwa.gov.tw/Data/js/rainfall/RainST_Info.js
 const STATION_ID = "C0A97";
 

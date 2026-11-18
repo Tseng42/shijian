@@ -14,10 +14,10 @@ import {
   type TideResponse,
 } from "@/lib/tide";
 
-// 目前只有馬岡有真實照片（跟 Hero 用的是同一張）；其他 3 個地點還沒有照片，
+// 目前只有馬崗有真實照片（跟 Hero 用的是同一張）；其他 3 個地點還沒有照片，
 // 用 pendingLabel 標示，不會用假圖／示意圖頂替真實地點。
 const LOCATION_PHOTOS: Record<string, { src: string; alt_zh: string; alt_en: string }> = {
-  magang: { src: "/hero-magang.jpg", alt_zh: "貢寮・馬岡海岸", alt_en: "The coast at Magang, Gongliao" },
+  magang: { src: "/hero-magang.jpg", alt_zh: "貢寮・馬崗海岸", alt_en: "The coast at Magang, Gongliao" },
 };
 
 export type MapTideLabels = { rising: string; falling: string; source: string };
@@ -37,7 +37,7 @@ export default function MapSection({
   viewOnMapLabel: string;
   tideLabels: MapTideLabels;
 }) {
-  // 每個地點此刻的潮位：和平島、八斗子各有預報點，卯澳和馬岡共用貢寮區。
+  // 每個地點此刻的潮位：和平島、八斗子各有預報點，卯澳和馬崗共用貢寮區。
   // 同一個預報點只抓一次。拿不到資料的地點就不顯示潮位，不放假的數字。
   const [tides, setTides] = useState<Partial<Record<TidePlace, TideExtreme[]>>>({});
   const [now, setNow] = useState(() => Date.now());
